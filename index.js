@@ -149,33 +149,33 @@ app.get('/api/categories', (req, res) => {
             { id: '400', name: 'Claddings', slug: 'claddings', type: 'main' },
             
             // Bathroom Sub-categories
-            { id: '101', name: 'Basins', slug: 'basins', parent: '100', type: 'subcategory' },
-            { id: '102', name: 'Tapware', slug: 'tapware', parent: '100', type: 'subcategory' },
-            { id: '103', name: 'Showerware', slug: 'showerware', parent: '100', type: 'subcategory' },
-            { id: '104', name: 'Toilets & Bidets', slug: 'toilets-bidets', parent: '100', type: 'subcategory' },
-            { id: '105', name: 'Vanities', slug: 'vanities', parent: '100', type: 'subcategory' },
-            { id: '106', name: 'Bathroom Accessories', slug: 'bathroom-accessories', parent: '100', type: 'subcategory' },
-            { id: '107', name: 'Cabinet Handles', slug: 'cabinet-handles', parent: '100', type: 'subcategory' },
-            { id: '108', name: 'Waste, Traps & Grates', slug: 'waste-traps-grates', parent: '100', type: 'subcategory' },
-            { id: '109', name: 'Shower Screens', slug: 'shower-screens', parent: '100', type: 'subcategory' },
-            { id: '110', name: 'Bathroom Packages', slug: 'bathroom-packages', parent: '100', type: 'subcategory' },
+            { id: '101', name: 'Basins', slug: 'basins', parent_id: '100', type: 'subcategory' },
+            { id: '102', name: 'Tapware', slug: 'tapware', parent_id: '100', type: 'subcategory' },
+            { id: '103', name: 'Showerware', slug: 'showerware', parent_id: '100', type: 'subcategory' },
+            { id: '104', name: 'Toilets & Bidets', slug: 'toilets-bidets', parent_id: '100', type: 'subcategory' },
+            { id: '105', name: 'Vanities', slug: 'vanities', parent_id: '100', type: 'subcategory' },
+            { id: '106', name: 'Bathroom Accessories', slug: 'bathroom-accessories', parent_id: '100', type: 'subcategory' },
+            { id: '107', name: 'Cabinet Handles', slug: 'cabinet-handles', parent_id: '100', type: 'subcategory' },
+            { id: '108', name: 'Waste, Traps & Grates', slug: 'waste-traps-grates', parent_id: '100', type: 'subcategory' },
+            { id: '109', name: 'Shower Screens', slug: 'shower-screens', parent_id: '100', type: 'subcategory' },
+            { id: '110', name: 'Bathroom Packages', slug: 'bathroom-packages', parent_id: '100', type: 'subcategory' },
             
             // Glass Fencing Sub-categories
-            { id: '201', name: 'Frameless Glass Pool Fencing', slug: 'frameless-glass-pool-fencing', parent: '200', type: 'subcategory' },
-            { id: '202', name: 'Frameless Glass Balustrades', slug: 'frameless-glass-balustrades', parent: '200', type: 'subcategory' },
-            { id: '203', name: 'Frameless Glass Shower Screens', slug: 'frameless-glass-shower-screens', parent: '200', type: 'subcategory' },
-            { id: '204', name: 'Aluminium Pool Fencing', slug: 'aluminium-pool-fencing', parent: '200', type: 'subcategory' },
-            { id: '205', name: 'Aluminium Balustrades', slug: 'aluminium-balustrades', parent: '200', type: 'subcategory' },
+            { id: '201', name: 'Frameless Glass Pool Fencing', slug: 'frameless-glass-pool-fencing', parent_id: '200', type: 'subcategory' },
+            { id: '202', name: 'Frameless Glass Balustrades', slug: 'frameless-glass-balustrades', parent_id: '200', type: 'subcategory' },
+            { id: '203', name: 'Frameless Glass Shower Screens', slug: 'frameless-glass-shower-screens', parent_id: '200', type: 'subcategory' },
+            { id: '204', name: 'Aluminium Pool Fencing', slug: 'aluminium-pool-fencing', parent_id: '200', type: 'subcategory' },
+            { id: '205', name: 'Aluminium Balustrades', slug: 'aluminium-balustrades', parent_id: '200', type: 'subcategory' },
             
             // Flooring Sub-categories
-            { id: '301', name: 'Tiles', slug: 'tiles', parent: '300', type: 'subcategory' },
-            { id: '302', name: 'Composite Decking', slug: 'composite-decking', parent: '300', type: 'subcategory' },
+            { id: '301', name: 'Tiles', slug: 'tiles', parent_id: '300', type: 'subcategory' },
+            { id: '302', name: 'Composite Decking', slug: 'composite-decking', parent_id: '300', type: 'subcategory' },
             
             // Cladding Sub-categories
-            { id: '401', name: 'Composite Cladding', slug: 'composite-cladding', parent: '400', type: 'subcategory' },
-            { id: '402', name: 'Aluminium Battens Cladding', slug: 'aluminium-battens-cladding', parent: '400', type: 'subcategory' },
-            { id: '403', name: 'Composite Screening', slug: 'composite-screening', parent: '400', type: 'subcategory' },
-            { id: '404', name: 'Aluminium Solutions', slug: 'aluminium-solutions', parent: '400', type: 'subcategory' }
+            { id: '401', name: 'Composite Cladding', slug: 'composite-cladding', parent_id: '400', type: 'subcategory' },
+            { id: '402', name: 'Aluminium Battens Cladding', slug: 'aluminium-battens-cladding', parent_id: '400', type: 'subcategory' },
+            { id: '403', name: 'Composite Screening', slug: 'composite-screening', parent_id: '400', type: 'subcategory' },
+            { id: '404', name: 'Aluminium Solutions', slug: 'aluminium-solutions', parent_id: '400', type: 'subcategory' }
         ]
     });
 });
