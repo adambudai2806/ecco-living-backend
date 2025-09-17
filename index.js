@@ -103,6 +103,24 @@ app.get('/api/products', (req, res) => {
     });
 });
 
+// Get single product by ID
+app.get('/api/products/:id', (req, res) => {
+    const productId = parseInt(req.params.id);
+    const product = mockProducts.find(p => p.id === productId);
+    
+    if (product) {
+        res.json({
+            success: true,
+            data: product
+        });
+    } else {
+        res.status(404).json({
+            success: false,
+            error: 'Product not found'
+        });
+    }
+});
+
 // Categories API
 app.get('/api/categories', (req, res) => {
     res.json({
