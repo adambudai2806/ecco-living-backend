@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ecco Living - Coming Soon. Australia's premier destination for luxury home solutions.">
+    <meta name="keywords" content="luxury home renovation, bathroom fittings, glass fencing, aluminium pool fencing, composite decking, premium tiles">
+    <meta name="author" content="Ecco Living">
+    
+    <title>Ecco Living - Coming Soon</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    
+    <!-- Tailwind Config -->
+    <script src="./assets/js/tailwind-config.js"></script>
+    
+    <!-- Custom Gold Colors -->
+    <script>
+        tailwind.config = {
+            ...tailwind.config,
+            theme: {
+                ...tailwind.config.theme,
+                extend: {
+                    ...tailwind.config.theme.extend,
+                    colors: {
+                        ...tailwind.config.theme.extend.colors,
+                        'gold': '#D4AF37',
+                        'gold-light': '#F4E4BC',
+                        'gold-dark': '#B8941F',
+                        'beige': '#F5F5DC',
+                        'cream': '#FFFDD0',
+                    }
+                }
+            }
+        };
+    </script>
+    
+    <style>
+        /* Pin input styling */
+        .pin-input {
+            background: rgba(192, 192, 192, 0.1);
+            border: 2px solid rgba(192, 192, 192, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .pin-input:focus {
+            outline: none;
+            border-color: #c0c0c0;
+            background: rgba(192, 192, 192, 0.2);
+            box-shadow: 0 0 20px rgba(192, 192, 192, 0.3);
+        }
+        
+        .pin-digit {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        @media (max-width: 640px) {
+            .pin-digit {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+        
+        /* Show coming soon content immediately */
+        .coming-soon-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Pin access overlay */
+        .pin-overlay {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo-glow {
+            filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.3));
+        }
+        
+        /* Pulse animation for the logo */
+        @keyframes logoPulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(192, 192, 192, 0.6));
+            }
+        }
+        
+        .logo-animate {
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-secondary font-sans overflow-hidden">
+    
+    <!-- Pin Access Popup Modal -->
+    <div id="pinModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-2xl p-8 mx-6 max-w-md w-full shadow-2xl border-2 border-gold">
+            <div class="text-center">
+                <!-- Logo -->
+                <div class="mb-6">
+                    <img src="./Ecco living logo.png" alt="Ecco Living Logo" class="h-12 md:h-16 mx-auto">
+                </div>
+                
+                <!-- Pin Entry -->
+                <h2 class="text-primary text-xl md:text-2xl font-display font-semibold mb-2">Enter Access Pin</h2>
+                <p class="text-text-light text-sm mb-6">Please enter the 4-digit access pin</p>
+                
+                <div class="flex justify-center gap-3 mb-6">
+                    <input type="password" class="pin-input pin-digit" maxlength="1" id="pin1">
+                    <input type="password" class="pin-input pin-digit" maxlength="1" id="pin2">
+                    <input type="password" class="pin-input pin-digit" maxlength="1" id="pin3">
+                    <input type="password" class="pin-input pin-digit" maxlength="1" id="pin4">
+                </div>
+                
+                <div class="flex gap-3 justify-center">
+                    <button id="cancelPin" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-lg transition-all duration-300">
+                        Cancel
+                    </button>
+                    <button id="submitPin" class="bg-gradient-to-r from-gold to-gold-dark hover:from-gold-dark hover:to-gold text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300 hover:scale-105">
+                        Access
+                    </button>
+                </div>
+                
+                <div id="pinError" class="text-red-500 text-sm mt-3 hidden">
+                    Incorrect pin. Please try again.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Coming Soon Content -->
+    <div id="mainContent" class="coming-soon-content min-h-screen flex items-center justify-center bg-white">
+        <div class="container mx-auto px-6 text-center">
+            
+            <!-- Logo -->
+            <div class="mb-8 inline-block">
+                <img src="./Ecco living logo.png" alt="Ecco Living Logo" class="h-12 md:h-16 mx-auto">
+            </div>
+            
+            <!-- Coming Soon Text -->
+            <div class="mb-12">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-primary mb-6 leading-tight tracking-wider">
+                    COMING SOON
+                </h1>
+                <p class="text-xl md:text-2xl text-text-light max-w-3xl mx-auto leading-relaxed font-medium">
+                    We're crafting something extraordinary for you. Australia's premier destination for luxury home solutions will be launching soon.
+                </p>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="bg-gray-50 rounded-2xl p-8 md:p-12 max-w-5xl mx-auto shadow-xl border-2 border-gold">
+                <h2 class="text-2xl md:text-3xl font-display font-semibold text-primary mb-8 text-center">
+                    For Any Information Call Us
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 mb-8">
+                    <!-- Phone -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg border-2 border-gold-light">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-text-dark mb-2">Phone</h3>
+                        <a href="tel:+61451677441" class="text-xl font-bold text-primary hover:text-accent transition-colors block mb-2">
+                            +61 451 677 441
+                        </a>
+                        <p class="text-sm text-text-light">Call us anytime for expert advice</p>
+                    </div>
+                    
+                    <!-- Address -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg border-2 border-gold-light">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-text-dark mb-2">Our Location</h3>
+                        <div class="text-text-dark font-medium">
+                            <p class="font-semibold">Ecco Living</p>
+                            <p>Building D/ 60 Perry Street</p>
+                            <p>Matraville 2036</p>
+                            <p>Sydney NSW, Australia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="text-center">
+                    <div class="bg-gradient-to-r from-primary to-gold-dark rounded-xl p-6 text-white inline-block shadow-xl border-2 border-gold">
+                        <h3 class="text-xl font-display font-semibold mb-3">
+                            Australia's Premier Luxury Home Solutions
+                        </h3>
+                        <p class="text-gold-light mb-4">
+                            Contact us now for expert advice on bathrooms, fencing, cladding, and premium flooring
+                        </p>
+                        <a href="tel:+61451677441" 
+                           class="inline-block bg-gradient-to-r from-gold to-gold-light text-primary font-semibold py-3 px-8 rounded-lg hover:from-gold-light hover:to-gold transition-all duration-300 hover:scale-105 text-lg shadow-lg border border-gold-dark">
+                            Call +61 451 677 441
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="mt-16 pt-8 border-t border-gold-light">
+                <p class="text-text-light text-sm">
+                    &copy; 2024 Ecco Living. All rights reserved.
+                </p>
+                <div class="mt-2">
+                    <button id="accessSiteBtn" class="text-gray-400 hover:text-gray-600 text-xs transition-colors underline">
+                        Admin Access
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Pin functionality
+        const pinInputs = document.querySelectorAll('.pin-digit');
+        const submitBtn = document.getElementById('submitPin');
+        const cancelBtn = document.getElementById('cancelPin');
+        const accessBtn = document.getElementById('accessSiteBtn');
+        const errorDiv = document.getElementById('pinError');
+        const pinModal = document.getElementById('pinModal');
+        const mainContent = document.getElementById('mainContent');
+        
+        const correctPin = '1512';
+        
+        // Show coming soon content immediately
+        document.body.style.overflow = 'auto';
+        
+        // Show pin modal when access button is clicked
+        accessBtn.addEventListener('click', () => {
+            pinModal.classList.remove('hidden');
+            setTimeout(() => {
+                pinInputs[0].focus();
+            }, 100);
+        });
+        
+        // Close modal when cancel is clicked
+        cancelBtn.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside
+        pinModal.addEventListener('click', (e) => {
+            if (e.target === pinModal) {
+                closeModal();
+            }
+        });
+        
+        function closeModal() {
+            pinModal.classList.add('hidden');
+            clearPinInputs();
+            errorDiv.classList.add('hidden');
+        }
+        
+        function clearPinInputs() {
+            pinInputs.forEach(input => {
+                input.value = '';
+                input.style.animation = '';
+            });
+        }
+        
+        // Handle pin input
+        pinInputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                errorDiv.classList.add('hidden');
+                
+                // Move to next input
+                if (e.target.value.length === 1 && index < pinInputs.length - 1) {
+                    pinInputs[index + 1].focus();
+                }
+            });
+            
+            input.addEventListener('keydown', (e) => {
+                // Handle backspace
+                if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
+                    pinInputs[index - 1].focus();
+                }
+                
+                // Handle enter key
+                if (e.key === 'Enter') {
+                    checkPin();
+                }
+                
+                // Handle escape key
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        });
+        
+        // Submit pin
+        submitBtn.addEventListener('click', checkPin);
+        
+        function checkPin() {
+            const enteredPin = Array.from(pinInputs).map(input => input.value).join('');
+            
+            if (enteredPin === correctPin) {
+                // Redirect to main site
+                window.location.href = '/index.html';
+            } else {
+                errorDiv.classList.remove('hidden');
+                
+                // Shake animation
+                pinInputs.forEach(input => {
+                    input.style.animation = 'none';
+                    setTimeout(() => {
+                        input.style.animation = 'shake 0.5s ease-in-out';
+                    }, 10);
+                });
+                
+                // Clear inputs after shake
+                setTimeout(() => {
+                    clearPinInputs();
+                    pinInputs[0].focus();
+                }, 500);
+            }
+        }
+        
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Simple page load - no fading animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Page is ready, no special animations needed
+        });
+    </script>
+</body>
+</html>

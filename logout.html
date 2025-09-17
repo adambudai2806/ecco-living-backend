@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout - Ecco Living</title>
+    <script>
+        // Clear all auth tokens and redirect
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Clear all cookies
+        document.cookie.split(";").forEach(function(c) { 
+            document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        
+        alert('You have been logged out successfully!');
+        window.location.href = '/admin/';
+    </script>
+</head>
+<body>
+    <p>Logging out...</p>
+</body>
+</html>

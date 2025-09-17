@@ -1,0 +1,757 @@
+/* Custom keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(201, 169, 110, 0.3);
+    }
+    to {
+        box-shadow: 0 0 40px rgba(201, 169, 110, 0.6);
+    }
+}
+
+@keyframes textReveal {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+        clip-path: inset(100% 0 0 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes imageReveal {
+    from {
+        opacity: 0;
+        transform: scale(1.2);
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes shimmer {
+    0% { 
+        background-position: -200% 0; 
+    }
+    100% { 
+        background-position: 200% 0; 
+    }
+}
+
+/* Custom utilities */
+.text-reveal-container {
+    overflow: hidden;
+}
+
+.image-reveal-container {
+    overflow: hidden;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #c0c0c0 0%, #a0a0a0 50%, #e5e5e5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.glass-effect {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.parallax-element {
+    will-change: transform;
+}
+
+.magnetic-element {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Advanced hover effects */
+.hover-lift {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+}
+
+.hover-scale {
+    transition: all 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Loading screen */
+.loading-screen {
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c9a96e;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b8956a;
+}
+
+/* Custom cursor - disabled for better UX */
+.custom-cursor {
+    cursor: auto;
+}
+
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #c9a96e;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: all 0.3s ease;
+}
+
+.cursor-follower {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #0f0f0f;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.1s ease;
+}
+
+/* Hero text effects */
+.hero-text {
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.9;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+}
+
+/* Category cards with advanced effects */
+.category-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.6s;
+    z-index: 2;
+}
+
+.category-card:hover::before {
+    left: 100%;
+}
+
+/* Navigation with glassmorphism */
+.nav-glass {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Advanced button hover effects */
+.btn-advanced {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-advanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+    z-index: -1;
+}
+
+.btn-advanced:hover::before {
+    left: 100%;
+}
+
+/* Text shimmer effect */
+.shimmer-text {
+    background: linear-gradient(90deg, #1a1a1a 0%, #c0c0c0 50%, #1a1a1a 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Hero Carousel */
+.hero-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-nav {
+    position: absolute;
+    bottom: 8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 20;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: #c0c0c0;
+    transform: scale(1.2);
+}
+
+.carousel-arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-arrows:hover {
+    background: rgba(192, 192, 192, 0.8);
+}
+
+.carousel-prev {
+    left: 2rem;
+}
+
+.carousel-next {
+    right: 2rem;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .custom-cursor {
+        cursor: auto;
+    }
+    
+    .cursor,
+    .cursor-follower {
+        display: none;
+    }
+    
+    .hero-text {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+    
+    .category-card {
+        margin-bottom: 2rem;
+    }
+    
+    .carousel-arrows {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-prev {
+        left: 1rem;
+    }
+    
+    .carousel-next {
+        right: 1rem;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .animate-float,
+    .animate-bounce,
+    .shimmer-text {
+        animation: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .cursor,
+    .cursor-follower,
+    #loadingScreen,
+    #navbar,
+    #cartSidebar,
+    #cartBackdrop {
+        display: none !important;
+    }
+    
+    .bg-primary {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Enhanced Navigation Styles */
+
+/* Desktop Mega Menu Enhancements - Vertical Dropdown with Horizontal Sub-expansion */
+.mega-menu {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 280px;
+    left: 0;
+    transform: translateY(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.mega-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    z-index: -1;
+    border: 1px solid rgba(192, 192, 192, 0.1);
+}
+
+/* Enhanced hover zones and timing */
+.mega-menu-item {
+    position: relative;
+}
+
+/* Create invisible bridge between nav item and dropdown */
+.mega-menu-item::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    right: -10px;
+    height: 15px;
+    z-index: 45;
+}
+
+/* Improved hover states with better timing */
+.mega-menu-item:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.25s ease 0.1s, visibility 0.25s ease 0.1s, transform 0.25s ease 0.1s;
+}
+
+.mega-menu {
+    transition: opacity 0.3s ease 0.15s, visibility 0.3s ease 0.15s, transform 0.3s ease 0.15s;
+}
+
+/* Vertical Dropdown with Horizontal Sub-expansion */
+.dropdown-submenu {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.dropdown-submenu .submenu-arrow {
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.dropdown-submenu:hover .submenu-arrow {
+    transform: rotate(90deg);
+    color: #c0c0c0;
+}
+
+/* Horizontal expansion of submenu content */
+.submenu-content {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    padding: 20px;
+    margin-left: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(192, 192, 192, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.3s ease 0.1s;
+    z-index: 60;
+    max-height: none;
+    overflow: visible;
+}
+
+.dropdown-submenu:hover .submenu-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    max-height: none;
+}
+
+/* Enhanced styling for categories */
+.dropdown-submenu h3 {
+    color: #1f2937;
+    font-size: 14px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #f3f4f6;
+    cursor: pointer;
+}
+
+.dropdown-submenu:hover h3 {
+    color: #c0c0c0;
+}
+
+/* Grid layout returns to vertical for main dropdown */
+@media (min-width: 1024px) {
+    .mega-menu .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .dropdown-submenu {
+        padding: 12px;
+        border-radius: 8px;
+        margin: 4px 0;
+    }
+    
+    .dropdown-submenu:hover {
+        background: rgba(192, 192, 192, 0.05);
+    }
+    
+    /* Ensure horizontal submenus don't get cut off */
+    .submenu-content {
+        z-index: 70;
+    }
+    
+    /* Multi-column layout for horizontal submenus when they have many items */
+    .submenu-content .space-y-1 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 8px 16px;
+        grid-auto-rows: min-content;
+    }
+    
+    /* Special handling for Materials mega menu which has different structure */
+    .mega-menu .grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .mega-menu .grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile Navigation Enhancements */
+.mobile-nav-panel {
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#mobileMenu.active .mobile-nav-panel {
+    transform: translateX(0);
+}
+
+#mobileMenu {
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#mobileMenu.active {
+    transform: translateX(0);
+}
+
+.mobile-dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.mobile-dropdown.active .mobile-dropdown-arrow {
+    transform: rotate(90deg);
+}
+
+.mobile-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mobile-dropdown.active .mobile-dropdown-content {
+    max-height: 500px;
+}
+
+.mobile-submenu-arrow {
+    transition: transform 0.2s ease;
+}
+
+.mobile-submenu.active .mobile-submenu-arrow {
+    transform: rotate(90deg);
+}
+
+.mobile-submenu-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.mobile-submenu.active .mobile-submenu-content {
+    max-height: 300px;
+}
+
+/* Refined hover effects */
+.nav-link {
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #c0c0c0;
+}
+
+.mega-menu-item:hover .nav-link {
+    color: #c0c0c0;
+}
+
+/* Improved hover zones for better UX */
+.mega-menu-item {
+    padding: 8px 4px;
+    margin: -8px -4px;
+}
+
+/* Better spacing and hover areas for dropdown items */
+.mega-menu a {
+    position: relative;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.mega-menu a:hover {
+    background-color: #f8fafc;
+    color: #c0c0c0;
+    transform: translateX(2px);
+}
+
+/* Submenu hover improvements */
+.dropdown-submenu {
+    border-radius: 8px;
+    padding: 4px;
+    margin: -4px;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-submenu:hover {
+    background-color: rgba(192, 192, 192, 0.05);
+}
+
+/* Touch-friendly mobile interactions */
+@media (max-width: 1024px) {
+    .mobile-nav-trigger,
+    .mobile-submenu-trigger {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .mobile-nav-panel {
+        max-width: 325px;
+        width: 100vw;
+    }
+}
+
+/* Enhanced Navigation Animation Classes */
+.nav-slide-in {
+    animation: slideInFromLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Smooth scrolling for navigation links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid #000;
+    }
+    
+    .nav-glass {
+        background: rgba(255, 255, 255, 0.98);
+        border-bottom: 2px solid #000;
+    }
+}

@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ecco Living - Australia's premier destination for luxury home solutions. Curated bathrooms, fencing & cladding, and flooring materials.">
+    <meta name="keywords" content="luxury home renovation, bathroom fittings, glass fencing, aluminium pool fencing, composite decking, premium tiles">
+    <meta name="author" content="Ecco Living">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eccoliving.com.au/">
+    <meta property="og:title" content="Ecco Living - Curated Home Solutions">
+    <meta property="og:description" content="Discover exceptional quality in bathrooms, fencing & cladding, and flooring with Australia's most refined collection">
+    <meta property="og:image" content="https://eccoliving.com.au/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://eccoliving.com.au/">
+    <meta property="twitter:title" content="Ecco Living - Curated Home Solutions">
+    <meta property="twitter:description" content="Discover exceptional quality in bathrooms, fencing & cladding, and flooring with Australia's most refined collection">
+    <meta property="twitter:image" content="https://eccoliving.com.au/og-image.jpg">
+
+    <title>Ecco Living - Curated Home Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    
+    <!-- Lenis for smooth scrolling -->
+    <!-- <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> -->
+    
+    <!-- Shopify Buy SDK (for future e-commerce integration) -->
+    <!-- <script src="https://sdks.shopifycdn.com/storefront-api-client/v2/shop-buy-umd.min.js"></script> -->
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    
+    <!-- Tailwind Config -->
+    <script src="./assets/js/tailwind-config.js"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ecco Living",
+        "url": "https://eccoliving.com.au",
+        "logo": "https://eccoliving.com.au/logo.png",
+        "description": "Australia's premier destination for luxury home solutions",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "AU"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+61-1300-ECCO",
+            "contactType": "customer service",
+            "availableLanguage": "English"
+        },
+        "sameAs": [
+            "https://www.facebook.com/eccoliving",
+            "https://www.instagram.com/eccoliving",
+            "https://www.linkedin.com/company/eccoliving"
+        ]
+    }
+    </script>
+    
+    <style>
+        /* Mobile Menu Fixes */
+        #mobileMenu {
+            transform: translateX(100%) !important;
+            visibility: hidden;
+        }
+        
+        #mobileMenu.active {
+            transform: translateX(0) !important;
+            visibility: visible;
+        }
+        
+        /* Ensure mobile menu panel slides properly */
+        .mobile-nav-panel {
+            transform: translateX(0) !important;
+        }
+        
+        /* Loading screen mobile optimization */
+        @media (max-width: 640px) {
+            #loadingScreen .mb-8 {
+                margin-bottom: 1rem;
+            }
+            
+            #loadingScreen img {
+                max-height: 48px;
+            }
+        }
+        
+        /* Ensure hamburger menu is clickable */
+        #mobileMenuBtn {
+            z-index: 40;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="font-sans text-text-dark overflow-x-hidden">
+    <!-- Custom Cursor Disabled for Better UX -->
+    <!-- <div class="cursor" aria-hidden="true"></div>
+    <div class="cursor-follower" aria-hidden="true"></div> -->
+    
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen fixed inset-0 z-50 flex items-center justify-center" role="progressbar" aria-label="Loading">
+        <div class="text-center">
+            <div class="mb-8 opacity-0" id="loadingLogo">
+                <img src="/assets/images/logo.png" alt="Ecco Living" class="h-12 md:h-16 w-auto mx-auto filter brightness-200">
+            </div>
+            <div class="w-32 h-1 bg-accent/20 rounded-full overflow-hidden">
+                <div id="loadingBar" class="h-full bg-accent rounded-full w-0 transition-all duration-1000"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skip to main content (Accessibility) -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-accent text-white p-4 z-[60]">
+        Skip to main content
+    </a>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-40 transition-all duration-500 transform -translate-y-full" role="navigation" aria-label="Main navigation">
+        <div class="nav-glass">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex items-center h-20">
+                    <a href="#" class="flex items-center hover:opacity-80 transition-opacity duration-300 -ml-36" aria-label="Ecco Living Home">
+                        <img src="/assets/images/logo.png" alt="Ecco Living" class="h-8 w-auto">
+                    </a>
+                    
+                    <div class="hidden xl:flex items-center space-x-4 flex-1 justify-center">
+                        <a href="#home" class="nav-link relative group text-sm font-medium" aria-label="Home">
+                            <span class="relative z-10">Home</span>
+                            <span class="absolute inset-x-0 -bottom-1 h-px bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        </a>
+                        
+                        <!-- Glass Fencing - Horizontal Mega Menu -->
+                        <div class="relative group mega-menu-item">
+                            <button class="nav-link relative group text-sm font-medium flex items-center" onclick="window.location.href='glass-fencing.html'">
+                                <span class="relative z-10">Glass Fencing</span>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="mega-menu absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                                <div class="p-6">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <div class="relative group/pool-fencing">
+                                            <a href="frameless-glass-pool-fencing.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="6" y="6" width="12" height="12" rx="0.5"/>
+                                                    <rect x="5" y="16" width="2" height="1.5" rx="0.5"/>
+                                                    <circle cx="6" cy="17.5" r="0.5"/>
+                                                    <rect x="17" y="16" width="2" height="1.5" rx="0.5"/>
+                                                    <circle cx="18" cy="17.5" r="0.5"/>
+                                                    <circle cx="6" cy="16.5" r="0.3"/>
+                                                    <circle cx="18" cy="16.5" r="0.3"/>
+                                                </svg>
+                                                Glass Pool Fencing
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Glass Pool Fencing Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/pool-fencing:opacity-100 group-hover/pool-fencing:visible transition-all duration-300 transform translate-x-2 group-hover/pool-fencing:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#build-your-pool-fence" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Build Your Pool Fence</a>
+                                                        <a href="#2205-duplex-spigots" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">2205 Duplex Spigots</a>
+                                                        <a href="#non-conductive-spigots" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Non Conductive Spigots</a>
+                                                        <a href="#soft-close-hinges" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Soft Close Hinges</a>
+                                                        <a href="#latch" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Latch</a>
+                                                        <a href="#support-clamps" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Support Clamps</a>
+                                                        <a href="#pool-fence-glass-panels" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Pool Fence Glass Panels</a>
+                                                        <a href="#pool-fence-hinge-panels" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Pool Fence Hinge Panels</a>
+                                                        <a href="#pool-fence-gates" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Pool Fence Gates</a>
+                                                        <a href="#pool-fence-transition-panels" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Pool Fence Transition Panels</a>
+                                                        <a href="#grout" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Grout</a>
+                                                        <a href="#custom-glass" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Custom Glass</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/balustrades">
+                                            <a href="frameless-glass-balustrades.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M4 8h16"/>
+                                                    <rect x="6" y="9" width="12" height="6" rx="0.5"/>
+                                                    <path d="M6 8v7"/>
+                                                    <path d="M18 8v7"/>
+                                                    <path d="M4 16h4"/>
+                                                    <path d="M6 18h4"/>
+                                                    <path d="M8 20h4"/>
+                                                </svg>
+                                                Glass Balustrades
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Glass Balustrades Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/balustrades:opacity-100 group-hover/balustrades:visible transition-all duration-300 transform translate-x-2 group-hover/balustrades:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#build-your-balustrade" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Build Your Balustrade</a>
+                                                        <a href="#2205-duplex-spigots-balustrade" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">2205 Duplex Spigots</a>
+                                                        <a href="#support-glass-clamps" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Support and Glass Clamps</a>
+                                                        <a href="#mini-top-rail-connectors" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Mini Top Rail Connectors</a>
+                                                        <a href="#deluxe-top-rail" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Deluxe Top Rail</a>
+                                                        <a href="#standoffs" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Standoffs</a>
+                                                        <a href="#deluxe-top-rail-connectors" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Deluxe Top Rail Connectors</a>
+                                                        <a href="#balustrade-glass-panels" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Balustrade Glass Panels</a>
+                                                        <a href="#balustrade-grout" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Grout</a>
+                                                        <a href="#chemical-anchoring" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Chemical Anchoring</a>
+                                                        <a href="#custom-glass-balustrade" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Custom Glass</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Aluminium Solutions - Horizontal Mega Menu -->
+                        <div class="relative group mega-menu-item">
+                            <button class="nav-link relative group text-sm font-medium flex items-center" onclick="window.location.href='aluminium-solutions.html'">
+                                <span class="relative z-10">Aluminium Solutions</span>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="mega-menu absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                                <div class="p-6">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <div class="relative group/pool-fencing">
+                                            <a href="aluminium-pool-fencing.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M3 12h18"/>
+                                                    <path d="M3 8h18"/>
+                                                    <path d="M3 16h18"/>
+                                                    <path d="M5 6v12"/>
+                                                    <path d="M19 6v12"/>
+                                                </svg>
+                                                Pool Fencing
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Pool Fencing Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/pool-fencing:opacity-100 group-hover/pool-fencing:visible transition-all duration-300 transform translate-x-2 group-hover/pool-fencing:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#vista-aluminium-pool-fence" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Vista Aluminium Pool Fence</a>
+                                                        <a href="#ray-pool-fencing" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Ray Pool Fencing</a>
+                                                        <a href="#batten-pool-fencing" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Batten Pool Fencing</a>
+                                                        <a href="#arc-aluminium-pool-fence" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Arc Aluminium Pool Fence</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/alu-balustrades">
+                                            <a href="aluminium-balustrades.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M4 12h16"/>
+                                                    <path d="M8 8v8"/>
+                                                    <path d="M12 8v8"/>
+                                                    <path d="M16 8v8"/>
+                                                    <circle cx="8" cy="6" r="1"/>
+                                                    <circle cx="12" cy="6" r="1"/>
+                                                    <circle cx="16" cy="6" r="1"/>
+                                                </svg>
+                                                Balustrades
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Balustrades Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/alu-balustrades:opacity-100 group-hover/alu-balustrades:visible transition-all duration-300 transform translate-x-2 group-hover/alu-balustrades:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#blade-aluminium-balustrade" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Blade Aluminium Balustrade</a>
+                                                        <a href="#ray-aluminium-balustrade" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Ray Aluminium Balustrade</a>
+                                                        <a href="#view-aluminium-balustrade" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">View Aluminium Balustrade</a>
+                                                        <a href="#skye-aluminium-balustrade" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Skye Aluminium Balustrade</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Flooring - Horizontal Mega Menu -->
+                        <div class="relative group mega-menu-item">
+                            <button class="nav-link relative group text-sm font-medium flex items-center" onclick="window.location.href='flooring.html'">
+                                <span class="relative z-10">Flooring</span>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="mega-menu absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                                <div class="p-6">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <div class="relative group/tiles">
+                                            <a href="tiles.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="4" y="4" width="6" height="6" rx="0.5"/>
+                                                    <rect x="14" y="4" width="6" height="6" rx="0.5"/>
+                                                    <rect x="4" y="14" width="6" height="6" rx="0.5"/>
+                                                    <rect x="14" y="14" width="6" height="6" rx="0.5"/>
+                                                </svg>
+                                                Tiles
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Tiles Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/tiles:opacity-100 group-hover/tiles:visible transition-all duration-300 transform translate-x-2 group-hover/tiles:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#bathroom-tiles" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Bathroom</a>
+                                                        <a href="#kitchen-laundry-tiles" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Kitchen / Laundry</a>
+                                                        <a href="#splashback-feature-tiles" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Splashback / Feature</a>
+                                                        <a href="#living-tiles" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Living</a>
+                                                        <a href="#outdoor-tiles" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Outdoor</a>
+                                                        <a href="#pool-tiles" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Pool</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/composite-decking">
+                                            <a href="composite-decking.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="2" y="6" width="20" height="3" rx="1"/>
+                                                    <rect x="2" y="11" width="20" height="3" rx="1"/>
+                                                    <rect x="2" y="16" width="20" height="3" rx="1"/>
+                                                    <circle cx="5" cy="7.5" r="0.5"/>
+                                                    <circle cx="19" cy="7.5" r="0.5"/>
+                                                    <circle cx="5" cy="12.5" r="0.5"/>
+                                                    <circle cx="19" cy="12.5" r="0.5"/>
+                                                    <circle cx="5" cy="17.5" r="0.5"/>
+                                                    <circle cx="19" cy="17.5" r="0.5"/>
+                                                </svg>
+                                                Composite Decking
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Composite Decking Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/composite-decking:opacity-100 group-hover/composite-decking:visible transition-all duration-300 transform translate-x-2 group-hover/composite-decking:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#milboard-decking" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Milboard Decking</a>
+                                                        <a href="#milboard-flexible-square-edging" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Milboard Flexible Square Edging</a>
+                                                        <a href="#milboard-bullnose-edging" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Milboard Bullnose Edging</a>
+                                                        <a href="#milboard-fascia-board" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Milboard Fascia Board</a>
+                                                        <a href="#milboard-weathered-decking" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Milboard Weathered Decking</a>
+                                                        <a href="#woodevo-homeadvanced-decking" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Woodevo HomeAdvanced Decking</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Claddings - Horizontal Mega Menu -->
+                        <div class="relative group mega-menu-item">
+                            <button class="nav-link relative group text-sm font-medium flex items-center" onclick="window.location.href='claddings.html'">
+                                <span class="relative z-10">Claddings</span>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="mega-menu absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                                <div class="p-6">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <div class="relative group/composite-cladding">
+                                            <a href="composite-cladding.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="3" y="4" width="18" height="16" rx="1"/>
+                                                    <path d="M3 8h18"/>
+                                                    <path d="M3 12h18"/>
+                                                    <path d="M3 16h18"/>
+                                                    <circle cx="6" cy="6" r="0.5"/>
+                                                    <circle cx="18" cy="6" r="0.5"/>
+                                                    <circle cx="6" cy="18" r="0.5"/>
+                                                    <circle cx="18" cy="18" r="0.5"/>
+                                                </svg>
+                                                Composite Cladding
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Composite Cladding Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/composite-cladding:opacity-100 group-hover/composite-cladding:visible transition-all duration-300 transform translate-x-2 group-hover/composite-cladding:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#milboard-envello-shadowline" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Milboard Envello Shadowline</a>
+                                                        <a href="#milboard-envello-board-batten" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Milboard Envello Board & Batten</a>
+                                                        <a href="#woodevo-castellated-cladding" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Woodevo Castellated Cladding</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Shower Screens - Dropdown Menu -->
+                        <div class="relative group mega-menu-item">
+                            <button class="nav-link relative group text-sm font-medium flex items-center" onclick="window.location.href='shower-screens.html'">
+                                <span class="relative z-10">Shower Screens</span>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="mega-menu absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                                <div class="p-6">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <div class="relative group/shower-screens">
+                                            <a href="#shower-screens" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M6 4v16"/>
+                                                    <path d="M6 20h12"/>
+                                                    <rect x="12" y="6" width="6" height="12" rx="0.5"/>
+                                                    <circle cx="16" cy="12" r="0.5"/>
+                                                    <circle cx="9" cy="8" r="1.5"/>
+                                                    <path d="M9 10v6"/>
+                                                    <path d="M7 12v4"/>
+                                                    <path d="M11 12v4"/>
+                                                </svg>
+                                                Frameless Glass Shower Screens
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Frameless Glass Shower Screens Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/shower-screens:opacity-100 group-hover/shower-screens:visible transition-all duration-300 transform translate-x-2 group-hover/shower-screens:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#build-your-shower-screen" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Build Your Shower Screen</a>
+                                                        <a href="#shower-hinges" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Hinges</a>
+                                                        <a href="#shower-clamps" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Clamps</a>
+                                                        <a href="#door-hardware-range" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Door Hardware Range</a>
+                                                        <a href="#water-bar" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Water Bar</a>
+                                                        <a href="#pvc-water-seal" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">PVC Water Seal</a>
+                                                        <a href="#shower-fixed-glass" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower Fixed Glass</a>
+                                                        <a href="#shower-hinge-glass" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower Hinge Glass</a>
+                                                        <a href="#shower-glass-doors" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower Glass Doors</a>
+                                                        <a href="#shower-fixed-radius-corner" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower Fixed with Radius Corner</a>
+                                                        <a href="#shower-fixed-fluted-radius" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower Fixed Low Iron Fluted with Radius Corner</a>
+                                                        <a href="#shower-handles" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower Handles</a>
+                                                        <a href="#shower-knobs" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower Knobs</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bathrooms - Horizontal Mega Menu -->
+                        <div class="relative group mega-menu-item">
+                            <button class="nav-link relative group text-sm font-medium flex items-center" onclick="window.location.href='bathrooms.html'">
+                                <span class="relative z-10">Bathrooms</span>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="mega-menu absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                                <div class="p-6">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <div class="relative group/tapware">
+                                            <a href="tapware.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M6 14v6a1 1 0 0 0 1 1h10a1 1 0 0 0 1 1v-6"/>
+                                                    <path d="M12 3v5"/>
+                                                    <path d="M9 8h6"/>
+                                                    <path d="M10 8V4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4"/>
+                                                    <circle cx="12" cy="11" r="2"/>
+                                                    <path d="M10 16l1-1h2l1 1"/>
+                                                </svg>
+                                                Tapware
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Tapware Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/tapware:opacity-100 group-hover/tapware:visible transition-all duration-300 transform translate-x-2 group-hover/tapware:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#basin-mixers" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Basin Mixers</a>
+                                                        <a href="#tall-basin-mixers" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Tall Basin Mixers</a>
+                                                        <a href="#freestanding-bath-mixers" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Freestanding Bath Mixers</a>
+                                                        <a href="#bath-spout-wall-mixers" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Bath Spout & Wall Mixers</a>
+                                                        <a href="#wall-mixers-diverters" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Wall Mixers With Diverters</a>
+                                                        <a href="#wall-three-piece-sets" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Wall Three Piece Sets</a>
+                                                        <a href="#counter-three-piece-sets" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Counter top Three Piece Sets</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/accessories">
+                                            <a href="bathroom-accessories.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="4" y="6" width="16" height="12" rx="1"/>
+                                                    <circle cx="8" cy="10" r="1"/>
+                                                    <circle cx="8" cy="14" r="1"/>
+                                                    <path d="M11 10h6"/>
+                                                    <path d="M11 14h4"/>
+                                                    <path d="M7 3v3"/>
+                                                    <path d="M17 3v3"/>
+                                                </svg>
+                                                Bathroom Accessories
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Bathroom Accessories Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/accessories:opacity-100 group-hover/accessories:visible transition-all duration-300 transform translate-x-2 group-hover/accessories:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#towel-rails" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Towel Rails</a>
+                                                        <a href="#heated-towel-rails" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Heated Towel Rails</a>
+                                                        <a href="#robe-hooks" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Robe Hooks</a>
+                                                        <a href="#toilet-accessories" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Toilet Accessories</a>
+                                                        <a href="#soap-dish-holders-shelves" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Soap Dish Holders and Shelves</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/shower">
+                                            <a href="showerware.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="6" r="3"/>
+                                                    <path d="M12 9v12"/>
+                                                    <path d="M9 15l1.5-1.5 1.5 1.5 1.5-1.5L15 15"/>
+                                                    <path d="M10 18l1-1 1 1 1-1 1 1"/>
+                                                    <path d="M6 21h12"/>
+                                                </svg>
+                                                Shower Hardware
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Shower Hardware Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/shower:opacity-100 group-hover/shower:visible transition-all duration-300 transform translate-x-2 group-hover/shower:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#shower-on-rails" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower on Rails</a>
+                                                        <a href="#hand-held-showers" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Hand Held Showers</a>
+                                                        <a href="#shower-systems" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower Systems</a>
+                                                        <a href="#outdoor-showers" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Outdoor Showers</a>
+                                                        <a href="#rain-shower-heads" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Rain Shower Heads</a>
+                                                        <a href="#shower-mixers" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Shower Mixers</a>
+                                                        <a href="#wall-top-assemblies" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Wall Top Assemblies</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/waste">
+                                            <a href="waste-traps-grates.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="5" y="5" width="14" height="14" rx="1"/>
+                                                    <path d="M8 8h8"/>
+                                                    <path d="M8 12h8"/>
+                                                    <path d="M8 16h8"/>
+                                                    <circle cx="12" cy="12" r="1.5"/>
+                                                    <path d="M12 3v2"/>
+                                                    <path d="M12 19v2"/>
+                                                </svg>
+                                                Waste Traps & Grates
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Waste Traps & Grates Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/waste:opacity-100 group-hover/waste:visible transition-all duration-300 transform translate-x-2 group-hover/waste:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#basin-wastes" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Basin Wastes</a>
+                                                        <a href="#bath-wastes" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Bath Wastes</a>
+                                                        <a href="#floor-strip-drains" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Floor Strip Drains</a>
+                                                        <a href="#custom-strip-drains" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Custom Strip Drains</a>
+                                                        <a href="#bottle-traps" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Bottle Traps</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/vanities">
+                                            <a href="vanities.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="3" y="12" width="18" height="7" rx="1"/>
+                                                    <ellipse cx="8" cy="8" rx="2" ry="1"/>
+                                                    <ellipse cx="16" cy="8" rx="2" ry="1"/>
+                                                    <path d="M8 9v3"/>
+                                                    <path d="M16 9v3"/>
+                                                    <path d="M6 16h3"/>
+                                                    <path d="M15 16h3"/>
+                                                    <path d="M3 19v1"/>
+                                                    <path d="M21 19v1"/>
+                                                </svg>
+                                                Vanities
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Vanities Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/vanities:opacity-100 group-hover/vanities:visible transition-all duration-300 transform translate-x-2 group-hover/vanities:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#wall-hung-vanities" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Wall Hung Vanities</a>
+                                                        <a href="#floor-standing-vanities" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Floor Standing Vanities</a>
+                                                        <a href="#space-saving-vanities" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Space Saving Vanities</a>
+                                                        <a href="#mirrored-shaving-cabinets" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Mirrored Shaving Cabinets</a>
+                                                        <a href="#tall-boys" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Tall Boys</a>
+                                                        <a href="#vanity-tops" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Vanity Tops</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/basins">
+                                            <a href="basins.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M4 12c0 4 3 7 8 7s8-3 8-7"/>
+                                                    <path d="M4 12h16"/>
+                                                    <path d="M12 4v5"/>
+                                                    <path d="M10 6h4"/>
+                                                    <circle cx="12" cy="7" r="0.5"/>
+                                                </svg>
+                                                Basins
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Basins Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/basins:opacity-100 group-hover/basins:visible transition-all duration-300 transform translate-x-2 group-hover/basins:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#above-counter-basins" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Above Counter Basins</a>
+                                                        <a href="#under-counter-basins" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Under Counter Basins</a>
+                                                        <a href="#wall-hung-basins" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Wall Hung Basins</a>
+                                                        <a href="#semi-recessed-basins" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Semi Recessed Basins</a>
+                                                        <a href="#freestanding-basins" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Freestanding Basins</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/handles">
+                                            <a href="cabinet-handles.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="5" y="4" width="14" height="16" rx="1"/>
+                                                    <rect x="9" y="11" width="6" height="2" rx="1"/>
+                                                    <path d="M7 7h10"/>
+                                                    <path d="M7 17h10"/>
+                                                    <circle cx="11" cy="12" r="0.5"/>
+                                                    <circle cx="13" cy="12" r="0.5"/>
+                                                </svg>
+                                                Cabinet Handles
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Cabinet Handles Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/handles:opacity-100 group-hover/handles:visible transition-all duration-300 transform translate-x-2 group-hover/handles:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#knobs" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Knobs</a>
+                                                        <a href="#pull-handles" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Pull Handles</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/toilets">
+                                            <a href="toilets-bidets.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M7 19h10"/>
+                                                    <path d="M7 17h10"/>
+                                                    <path d="M6 11c0-3 2-4 6-4s6 1 6 4v6H6V11z"/>
+                                                    <path d="M9 7h6"/>
+                                                    <rect x="16" y="9" width="2" height="6" rx="1"/>
+                                                    <path d="M6 19v1"/>
+                                                    <path d="M18 19v1"/>
+                                                </svg>
+                                                Toilets & Bidets
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Toilets & Bidets Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/toilets:opacity-100 group-hover/toilets:visible transition-all duration-300 transform translate-x-2 group-hover/toilets:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#smart-toilets" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Smart Toilets</a>
+                                                        <a href="#toilet-suites" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Toilet Suites</a>
+                                                        <a href="#wall-faced-pans" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Wall Faced Pans</a>
+                                                        <a href="#wall-hung-pans" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Wall Hung Pans</a>
+                                                        <a href="#bidet" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Bidet</a>
+                                                        <a href="#inwall-cisterns" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Inwall Cisterns</a>
+                                                        <a href="#push-buttons" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Push Buttons</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/bathtubs">
+                                            <a href="bathtubs.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M4 11h16"/>
+                                                    <path d="M4 11c0 3 2 5 8 5s8-2 8-5"/>
+                                                    <path d="M4 11V9a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"/>
+                                                    <path d="M3 16h2"/>
+                                                    <path d="M19 16h2"/>
+                                                    <circle cx="7" cy="9" r="0.5"/>
+                                                    <circle cx="17" cy="9" r="0.5"/>
+                                                </svg>
+                                                Bathtubs
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Bathtubs Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/bathtubs:opacity-100 group-hover/bathtubs:visible transition-all duration-300 transform translate-x-2 group-hover/bathtubs:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#drop-in-pvc-bath" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Drop in PVC Bath</a>
+                                                        <a href="#drop-in-steel-baths" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Drop in Steel Baths</a>
+                                                        <a href="#freestanding-pvc-baths" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Freestanding PVC Baths</a>
+                                                        <a href="#freestanding-stone-baths" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Freestanding Stone Baths</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/mirrors">
+                                            <a href="mirrors-shaving-cabinets.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="7"/>
+                                                    <circle cx="12" cy="12" r="4"/>
+                                                    <path d="M12 5V3"/>
+                                                    <path d="M5 12H3"/>
+                                                    <path d="M12 19v2"/>
+                                                    <path d="M19 12h2"/>
+                                                    <path d="M17.65 6.35l1.41-1.41"/>
+                                                    <path d="M6.35 17.65l-1.41 1.41"/>
+                                                </svg>
+                                                Mirrors & Shaving Cabinets
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Mirrored Shaving Cabinets Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/mirrors:opacity-100 group-hover/mirrors:visible transition-all duration-300 transform translate-x-2 group-hover/mirrors:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#rectangular-shaving-cabinet" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Rectangular Shaving Cabinet</a>
+                                                        <a href="#round-shaving-cabinet" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Round Shaving Cabinet</a>
+                                                        <a href="#single-arch-shaving-cabinet" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Single Arch Shaving Cabinet</a>
+                                                        <a href="#double-arch-shaving-cabinet" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Double Arch Shaving Cabinet</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative group/care">
+                                            <a href="care-disability.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="5" r="2"/>
+                                                    <path d="M8 9h8"/>
+                                                    <path d="M12 9v10"/>
+                                                    <rect x="7" y="13" width="10" height="4" rx="1"/>
+                                                    <path d="M9 19v2"/>
+                                                    <path d="M15 19v2"/>
+                                                    <path d="M5 13h2"/>
+                                                    <path d="M17 13h2"/>
+                                                </svg>
+                                                Care and Disability
+                                                <svg class="w-3 h-3 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                            <!-- Care and Disability Submenu -->
+                                            <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-xl border opacity-0 invisible group-hover/care:opacity-100 group-hover/care:visible transition-all duration-300 transform translate-x-2 group-hover/care:translate-x-0 z-50">
+                                                <div class="p-4">
+                                                    <div class="space-y-1">
+                                                        <a href="#care-wall-hung-basins" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Wall Hung Basins</a>
+                                                        <a href="#care-tapware" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Care Tapware</a>
+                                                        <a href="#robust-tapware" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Robust Tapware</a>
+                                                        <a href="#care-toilets" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Care Toilets</a>
+                                                        <a href="#ambulant-toilet" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Ambulant Toilet</a>
+                                                        <a href="#pneumatics-inwall-cisterns" class="block py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">Pneumatics In-Wall Cisterns</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="bathroom-packages.html" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 rounded transition-colors duration-200">
+                                            <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="4" y="4" width="16" height="16" rx="1"/>
+                                                <path d="M8 8h8"/>
+                                                <path d="M8 12h5"/>
+                                                <path d="M8 16h6"/>
+                                                <circle cx="16" cy="12" r="1.5"/>
+                                                <circle cx="17" cy="16" r="1"/>
+                                                <path d="M12 2v2"/>
+                                                <path d="M12 20v2"/>
+                                                <path d="M2 12h2"/>
+                                                <path d="M20 12h2"/>
+                                            </svg>
+                                            Bathroom Packages
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#about" class="nav-link relative group text-sm font-medium" aria-label="About">
+                            <span class="relative z-10">About</span>
+                            <span class="absolute inset-x-0 -bottom-1 h-px bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        </a>
+                        <a href="#contact" class="nav-link relative group text-sm font-medium" aria-label="Contact">
+                            <span class="relative z-10">Contact</span>
+                            <span class="absolute inset-x-0 -bottom-1 h-px bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        </a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button id="cartBtn" class="relative p-2 hover:bg-accent/10 rounded-full transition-colors duration-300 group" aria-label="Shopping cart">
+                            <svg class="w-6 h-6 group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13v8a2 2 0 002 2h6a2 2 0 002-2v-8m-8 0h8"></path>
+                            </svg>
+                            <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 bg-accent text-white text-xs rounded-full flex items-center justify-center" aria-label="Cart items count">0</span>
+                        </button>
+                        
+                        <button id="mobileMenuBtn" class="xl:hidden p-2" aria-label="Toggle mobile menu" aria-expanded="false">
+                            <div class="w-6 h-0.5 bg-primary mb-1.5 transition-all duration-300"></div>
+                            <div class="w-6 h-0.5 bg-primary mb-1.5 transition-all duration-300"></div>
+                            <div class="w-6 h-0.5 bg-primary transition-all duration-300"></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu - Enhanced Sliding Panel -->
+    <div id="mobileMenu" class="fixed inset-0 z-30 transform translate-x-full transition-transform duration-500 xl:hidden" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" aria-hidden="true"></div>
+        <div class="mobile-nav-panel absolute left-0 top-0 h-full w-full max-w-sm bg-white shadow-2xl overflow-y-auto">
+            <!-- Mobile Nav Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-100">
+                <img src="/assets/images/logo.png" alt="Ecco Living" class="h-8 w-auto">
+                <button id="closeMobileMenu" class="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Content -->
+            <div class="mobile-nav-content py-4">
+                <nav class="space-y-2">
+                    <a href="#home" class="mobile-nav-link flex items-center px-6 py-3 text-gray-900 hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-medium">Home</span>
+                    </a>
+                    
+                    <!-- Glass Solutions Mobile Section -->
+                    <div class="mobile-dropdown">
+                        <button class="mobile-nav-trigger w-full flex items-center justify-between px-6 py-3 text-gray-900 hover:bg-gray-50 transition-colors duration-200" data-target="glass-solutions">
+                            <span class="font-medium">Glass Solutions</span>
+                            <svg class="mobile-dropdown-arrow w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <div id="glass-solutions" class="mobile-dropdown-content hidden bg-gray-50 border-t border-gray-100">
+                            <!-- Pool Fencing Subsection -->
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-700 hover:text-accent transition-colors duration-200" data-target="glass-pool-fencing">
+                                    <span class="font-medium">Pool Fencing</span>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="glass-pool-fencing" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#frameless-glass-pool-fencing" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Frameless Glass Fencing</a>
+                                    <a href="#semi-frameless-glass-pool-fencing" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Semi-Frameless Glass Fencing</a>
+                                    <a href="#framed-glass-pool-fencing" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Framed Glass Fencing</a>
+                                    <a href="#glass-pool-gates" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Glass Pool Gates</a>
+                                </div>
+                            </div>
+                            <!-- Shower Screens Subsection -->
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-700 hover:text-accent transition-colors duration-200" data-target="glass-shower-screens">
+                                    <span class="font-medium">Shower Screens</span>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="glass-shower-screens" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#frameless-shower-screens" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Frameless Shower Screens</a>
+                                    <a href="#semi-frameless-shower-screens" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Semi-Frameless Shower Screens</a>
+                                    <a href="#framed-shower-screens" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Framed Shower Screens</a>
+                                    <a href="#shower-doors" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Shower Doors</a>
+                                </div>
+                            </div>
+                            <!-- Glass Balustrades Subsection -->
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-700 hover:text-accent transition-colors duration-200" data-target="glass-balustrades">
+                                    <span class="font-medium">Glass Balustrades</span>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="glass-balustrades" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#structural-glazing" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Structural Glazing</a>
+                                    <a href="#glass-stair-balustrades" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Stair Balustrades</a>
+                                    <a href="#glass-deck-railings" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Deck Railings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Aluminium Solutions Mobile Section -->
+                    <div class="mobile-dropdown">
+                        <button class="mobile-nav-trigger w-full flex items-center justify-between px-6 py-3 text-gray-900 hover:bg-gray-50 transition-colors duration-200" data-target="aluminium-solutions">
+                            <span class="font-medium">Aluminium Solutions</span>
+                            <svg class="mobile-dropdown-arrow w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <div id="aluminium-solutions" class="mobile-dropdown-content hidden bg-gray-50 border-t border-gray-100">
+                            <!-- Pool Fencing Subsection -->
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-700 hover:text-accent transition-colors duration-200" data-target="aluminium-pool-fencing">
+                                    <span class="font-medium">Pool Fencing</span>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="aluminium-pool-fencing" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#aluminium-pool-slat-fencing" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Aluminium Slat Fencing</a>
+                                    <a href="#tubular-aluminium-fencing" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Tubular Aluminium Fencing</a>
+                                    <a href="#powder-coated-aluminium" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Powder Coated Aluminium</a>
+                                    <a href="#aluminium-pool-gates" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Aluminium Pool Gates</a>
+                                </div>
+                            </div>
+                            <!-- Battens & Cladding Subsection -->
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-700 hover:text-accent transition-colors duration-200" data-target="aluminium-battens">
+                                    <span class="font-medium">Battens & Cladding</span>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="aluminium-battens" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#vertical-aluminium-battens" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Vertical Battens</a>
+                                    <a href="#horizontal-aluminium-battens" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Horizontal Battens</a>
+                                    <a href="#aluminium-wall-cladding" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Wall Cladding</a>
+                                    <a href="#perforated-aluminium" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Perforated Aluminium</a>
+                                </div>
+                            </div>
+                            <!-- Balustrades Subsection -->
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-700 hover:text-accent transition-colors duration-200" data-target="aluminium-balustrades">
+                                    <span class="font-medium">Balustrades</span>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="aluminium-balustrades" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#aluminium-stair-balustrades" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Stair Balustrades</a>
+                                    <a href="#deck-balustrades" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Deck Balustrades</a>
+                                    <a href="#commercial-balustrades" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Commercial Balustrades</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Materials Mobile Section -->
+                    <div class="mobile-dropdown">
+                        <button class="mobile-nav-trigger w-full flex items-center justify-between px-6 py-3 text-gray-900 hover:bg-gray-50 transition-colors duration-200" data-target="materials">
+                            <span class="font-medium">Materials</span>
+                            <svg class="mobile-dropdown-arrow w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <div id="materials" class="mobile-dropdown-content hidden bg-gray-50 border-t border-gray-100">
+                            <!-- Tiles Subsection -->
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-700 hover:text-accent transition-colors duration-200" data-target="tiles">
+                                    <span class="font-medium">Tiles</span>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="tiles" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#porcelain-tiles" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Porcelain Tiles</a>
+                                    <a href="#ceramic-tiles" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Ceramic Tiles</a>
+                                    <a href="#natural-stone-tiles" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Natural Stone Tiles</a>
+                                    <a href="#mosaic-tiles" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Mosaic Tiles</a>
+                                    <a href="#large-format-tiles" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Large Format Tiles</a>
+                                </div>
+                            </div>
+                            <!-- Composite Subsection -->
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-700 hover:text-accent transition-colors duration-200" data-target="composite">
+                                    <span class="font-medium">Composite</span>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="composite" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#composite-decking" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Composite Decking</a>
+                                    <a href="#composite-cladding" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Composite Cladding</a>
+                                    <a href="#composite-screening" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Composite Screening</a>
+                                    <a href="#composite-battens" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Composite Battens</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bathrooms Mobile Section -->
+                    <div class="mobile-dropdown">
+                        <button class="mobile-nav-trigger w-full flex items-center justify-between px-6 py-3 text-gray-900 hover:bg-gray-50 transition-colors duration-200" data-target="bathrooms">
+                            <span class="font-medium">Bathrooms</span>
+                            <svg class="mobile-dropdown-arrow w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <div id="bathrooms" class="mobile-dropdown-content hidden bg-gray-50 border-t border-gray-100">
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="tapware-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M6 14v6a1 1 0 0 0 1 1h10a1 1 0 0 0 1 1v-6"/>
+                                            <path d="M12 3v5"/>
+                                            <path d="M9 8h6"/>
+                                            <path d="M10 8V4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4"/>
+                                            <circle cx="12" cy="11" r="2"/>
+                                            <path d="M10 16l1-1h2l1 1"/>
+                                        </svg>
+                                        <span>Tapware</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="tapware-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#basin-mixers" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Basin Mixers</a>
+                                    <a href="#tall-basin-mixers" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Tall Basin Mixers</a>
+                                    <a href="#freestanding-bath-mixers" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Freestanding Bath Mixers</a>
+                                    <a href="#bath-spout-wall-mixers" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Bath Spout & Wall Mixers</a>
+                                    <a href="#wall-mixers-diverters" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Wall Mixers With Diverters</a>
+                                    <a href="#wall-three-piece-sets" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Wall Three Piece Sets</a>
+                                    <a href="#counter-three-piece-sets" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Counter top Three Piece Sets</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="accessories-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="4" y="6" width="16" height="12" rx="1"/>
+                                            <circle cx="8" cy="10" r="1"/>
+                                            <circle cx="8" cy="14" r="1"/>
+                                            <path d="M11 10h6"/>
+                                            <path d="M11 14h4"/>
+                                            <path d="M7 3v3"/>
+                                            <path d="M17 3v3"/>
+                                        </svg>
+                                        <span>Bathroom Accessories</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="accessories-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#towel-rails" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Towel Rails</a>
+                                    <a href="#heated-towel-rails" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Heated Towel Rails</a>
+                                    <a href="#robe-hooks" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Robe Hooks</a>
+                                    <a href="#toilet-accessories" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Toilet Accessories</a>
+                                    <a href="#soap-dish-holders-shelves" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Soap Dish Holders and Shelves</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="shower-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="6" r="3"/>
+                                            <path d="M12 9v12"/>
+                                            <path d="M9 15l1.5-1.5 1.5 1.5 1.5-1.5L15 15"/>
+                                            <path d="M10 18l1-1 1 1 1-1 1 1"/>
+                                            <path d="M6 21h12"/>
+                                        </svg>
+                                        <span>Shower Hardware</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="shower-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#shower-on-rails" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Shower on Rails</a>
+                                    <a href="#hand-held-showers" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Hand Held Showers</a>
+                                    <a href="#shower-systems" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Shower Systems</a>
+                                    <a href="#outdoor-showers" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Outdoor Showers</a>
+                                    <a href="#rain-shower-heads" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Rain Shower Heads</a>
+                                    <a href="#shower-mixers" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Shower Mixers</a>
+                                    <a href="#wall-top-assemblies" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Wall Top Assemblies</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="waste-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="5" y="5" width="14" height="14" rx="1"/>
+                                            <path d="M8 8h8"/>
+                                            <path d="M8 12h8"/>
+                                            <path d="M8 16h8"/>
+                                            <circle cx="12" cy="12" r="1.5"/>
+                                            <path d="M12 3v2"/>
+                                            <path d="M12 19v2"/>
+                                        </svg>
+                                        <span>Waste Traps & Grates</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="waste-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#basin-wastes" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Basin Wastes</a>
+                                    <a href="#bath-wastes" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Bath Wastes</a>
+                                    <a href="#floor-strip-drains" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Floor Strip Drains</a>
+                                    <a href="#custom-strip-drains" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Custom Strip Drains</a>
+                                    <a href="#bottle-traps" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Bottle Traps</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="vanities-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="12" width="18" height="7" rx="1"/>
+                                            <ellipse cx="8" cy="8" rx="2" ry="1"/>
+                                            <ellipse cx="16" cy="8" rx="2" ry="1"/>
+                                            <path d="M8 9v3"/>
+                                            <path d="M16 9v3"/>
+                                            <path d="M6 16h3"/>
+                                            <path d="M15 16h3"/>
+                                            <path d="M3 19v1"/>
+                                            <path d="M21 19v1"/>
+                                        </svg>
+                                        <span>Vanities</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="vanities-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#wall-hung-vanities" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Wall Hung Vanities</a>
+                                    <a href="#floor-standing-vanities" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Floor Standing Vanities</a>
+                                    <a href="#space-saving-vanities" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Space Saving Vanities</a>
+                                    <a href="#mirrored-shaving-cabinets" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Mirrored Shaving Cabinets</a>
+                                    <a href="#tall-boys" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Tall Boys</a>
+                                    <a href="#vanity-tops" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Vanity Tops</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="basins-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4 12c0 4 3 7 8 7s8-3 8-7"/>
+                                            <path d="M4 12h16"/>
+                                            <path d="M12 4v5"/>
+                                            <path d="M10 6h4"/>
+                                            <circle cx="12" cy="7" r="0.5"/>
+                                        </svg>
+                                        <span>Basins</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="basins-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#above-counter-basins" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Above Counter Basins</a>
+                                    <a href="#under-counter-basins" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Under Counter Basins</a>
+                                    <a href="#wall-hung-basins" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Wall Hung Basins</a>
+                                    <a href="#semi-recessed-basins" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Semi Recessed Basins</a>
+                                    <a href="#freestanding-basins" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Freestanding Basins</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="handles-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="5" y="4" width="14" height="16" rx="1"/>
+                                            <rect x="9" y="11" width="6" height="2" rx="1"/>
+                                            <path d="M7 7h10"/>
+                                            <path d="M7 17h10"/>
+                                            <circle cx="11" cy="12" r="0.5"/>
+                                            <circle cx="13" cy="12" r="0.5"/>
+                                        </svg>
+                                        <span>Cabinet Handles</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="handles-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#knobs" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Knobs</a>
+                                    <a href="#pull-handles" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Pull Handles</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="toilets-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M7 19h10"/>
+                                            <path d="M7 17h10"/>
+                                            <path d="M6 11c0-3 2-4 6-4s6 1 6 4v6H6V11z"/>
+                                            <path d="M9 7h6"/>
+                                            <rect x="16" y="9" width="2" height="6" rx="1"/>
+                                            <path d="M6 19v1"/>
+                                            <path d="M18 19v1"/>
+                                        </svg>
+                                        <span>Toilets & Bidets</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="toilets-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#smart-toilets" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Smart Toilets</a>
+                                    <a href="#toilet-suites" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Toilet Suites</a>
+                                    <a href="#wall-faced-pans" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Wall Faced Pans</a>
+                                    <a href="#wall-hung-pans" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Wall Hung Pans</a>
+                                    <a href="#bidet" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Bidet</a>
+                                    <a href="#inwall-cisterns" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Inwall Cisterns</a>
+                                    <a href="#push-buttons" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Push Buttons</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="bathtubs-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4 11h16"/>
+                                            <path d="M4 11c0 3 2 5 8 5s8-2 8-5"/>
+                                            <path d="M4 11V9a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"/>
+                                            <path d="M3 16h2"/>
+                                            <path d="M19 16h2"/>
+                                            <circle cx="7" cy="9" r="0.5"/>
+                                            <circle cx="17" cy="9" r="0.5"/>
+                                        </svg>
+                                        <span>Bathtubs</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="bathtubs-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#drop-in-pvc-bath" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Drop in PVC Bath</a>
+                                    <a href="#drop-in-steel-baths" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Drop in Steel Baths</a>
+                                    <a href="#freestanding-pvc-baths" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Freestanding PVC Baths</a>
+                                    <a href="#freestanding-stone-baths" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Freestanding Stone Baths</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="mirrors-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="7"/>
+                                            <circle cx="12" cy="12" r="4"/>
+                                            <path d="M12 5V3"/>
+                                            <path d="M5 12H3"/>
+                                            <path d="M12 19v2"/>
+                                            <path d="M19 12h2"/>
+                                            <path d="M17.65 6.35l1.41-1.41"/>
+                                            <path d="M6.35 17.65l-1.41 1.41"/>
+                                        </svg>
+                                        <span>Mirrors & Shaving Cabinets</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="mirrors-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#rectangular-shaving-cabinet" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Rectangular Shaving Cabinet</a>
+                                    <a href="#round-shaving-cabinet" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Round Shaving Cabinet</a>
+                                    <a href="#single-arch-shaving-cabinet" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Single Arch Shaving Cabinet</a>
+                                    <a href="#double-arch-shaving-cabinet" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Double Arch Shaving Cabinet</a>
+                                </div>
+                            </div>
+                            <div class="mobile-submenu">
+                                <button class="mobile-submenu-trigger w-full flex items-center justify-between px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200" data-target="care-submenu">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="5" r="2"/>
+                                            <path d="M8 9h8"/>
+                                            <path d="M12 9v10"/>
+                                            <rect x="7" y="13" width="10" height="4" rx="1"/>
+                                            <path d="M9 19v2"/>
+                                            <path d="M15 19v2"/>
+                                            <path d="M5 13h2"/>
+                                            <path d="M17 13h2"/>
+                                        </svg>
+                                        <span>Care and Disability</span>
+                                    </div>
+                                    <svg class="mobile-submenu-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="care-submenu" class="mobile-submenu-content hidden pl-4 py-1 border-l border-gray-200">
+                                    <a href="#care-wall-hung-basins" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Wall Hung Basins</a>
+                                    <a href="#care-tapware" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Care Tapware</a>
+                                    <a href="#robust-tapware" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Robust Tapware</a>
+                                    <a href="#care-toilets" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Care Toilets</a>
+                                    <a href="#ambulant-toilet" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Ambulant Toilet</a>
+                                    <a href="#pneumatics-inwall-cisterns" class="block px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">Pneumatics In-Wall Cisterns</a>
+                                </div>
+                            </div>
+                            <a href="bathroom-packages.html" class="flex items-center px-8 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="#c0c0c0" viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="4" y="4" width="16" height="16" rx="1"/>
+                                    <path d="M8 8h8"/>
+                                    <path d="M8 12h5"/>
+                                    <path d="M8 16h6"/>
+                                    <circle cx="16" cy="12" r="1.5"/>
+                                    <circle cx="17" cy="16" r="1"/>
+                                    <path d="M12 2v2"/>
+                                    <path d="M12 20v2"/>
+                                    <path d="M2 12h2"/>
+                                    <path d="M20 12h2"/>
+                                </svg>
+                                Bathroom Packages
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="#about" class="mobile-nav-link flex items-center px-6 py-3 text-gray-900 hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-medium">About</span>
+                    </a>
+                    <a href="#contact" class="mobile-nav-link flex items-center px-6 py-3 text-gray-900 hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-medium">Contact</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen overflow-hidden" role="banner">
+            <!-- Hero Carousel -->
+            <div class="hero-carousel absolute inset-0">
+                <!-- Slide 1: Luxury Bathroom -->
+                <div class="carousel-slide active">
+                    <img src="/assets/images/hero-bathroom.jpg" alt="Luxury bathroom with modern fixtures">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+                
+                <!-- Slide 2: Glass Pool Fencing -->
+                <div class="carousel-slide">
+                    <img src="/assets/images/hero-glass-fencing.jpg" alt="Modern glass pool fencing">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+                
+                <!-- Slide 3: Luxury Tiles -->
+                <div class="carousel-slide">
+                    <img src="/assets/images/hero-tiles.jpg" alt="Premium tiles and surface materials">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+                
+                <!-- Slide 4: Composite Solutions -->
+                <div class="carousel-slide">
+                    <img src="/assets/images/hero-composite.jpg" alt="Composite cladding and decking solutions">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+                
+                
+                <!-- Navigation Dots -->
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            
+            <!-- Hero Content Overlay -->
+            <div class="relative z-10 min-h-screen flex items-center justify-center">
+                <div class="text-center px-6 max-w-6xl mx-auto">
+                    <div class="text-reveal-container mb-8">
+                        <h1 class="hero-text font-display text-white opacity-0 drop-shadow-lg" id="heroTitle">
+                            Curated Living<br>
+                            <span class="gradient-text">Solutions</span>
+                        </h1>
+                    </div>
+                    
+                    <div class="text-reveal-container mb-12">
+                        <p class="text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto leading-relaxed opacity-0 drop-shadow-md" id="heroSubtitle">
+                            Discover exceptional quality in bathrooms, glass fencing, and architectural solutions with Australia's most refined collection
+                        </p>
+                    </div>
+                    
+                    <div class="opacity-0" id="heroCTA">
+                        <a href="#categories" class="btn-advanced inline-block bg-white text-primary px-12 py-4 rounded-full font-medium tracking-wide hover:bg-accent hover:text-white hover:scale-105 transition-all duration-500 shadow-lg" role="button">
+                            Explore Collection
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 right-8 opacity-0" id="scrollIndicator" aria-hidden="true">
+                <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-white/80 rounded-full animate-bounce mt-2"></div>
+                </div>
+                <p class="text-xs text-white/70 mt-2 text-center">Scroll</p>
+            </div>
+            
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="py-32 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <div class="text-reveal-container">
+                        <h2 class="text-5xl md:text-6xl font-display font-light text-primary mb-6 opacity-0" data-animate="reveal">
+                            Our <span class="shimmer-text">Specialties</span>
+                        </h2>
+                    </div>
+                    <div class="text-reveal-container">
+                        <p class="text-xl text-text-light font-light opacity-0" data-animate="reveal" data-delay="200">
+                            Expertly curated collections for every space
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
+                    <!-- Glass Fencing -->
+                    <article class="category-card group cursor-pointer hover-lift opacity-0" data-animate="slideUp" data-delay="100" role="listitem">
+                        <div class="relative h-80 bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="/assets/images/Glass Pool Fencing.webp" 
+                                 alt="Modern glass pool fencing systems" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-accent/70 transition-all duration-500"></div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-display font-light text-white mb-1">Glass Fencing</h3>
+                                <p class="text-white/80 text-sm">Australian law-compliant pool safety</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Glass Shower Screens -->
+                    <article class="category-card group cursor-pointer hover-lift opacity-0" data-animate="slideUp" data-delay="200" role="listitem">
+                        <div class="relative h-80 bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="/assets/images/Glass Shower Screens.jpg" 
+                                 alt="Premium glass shower screens" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-accent/70 transition-all duration-500"></div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-display font-light text-white mb-1">Glass Shower Screens</h3>
+                                <p class="text-white/80 text-sm">Luxury bathroom enclosures</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Aluminium Pool Fencing -->
+                    <article class="category-card group cursor-pointer hover-lift opacity-0" data-animate="slideUp" data-delay="300" role="listitem">
+                        <div class="relative h-80 bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="/assets/images/Aluminium pool fence.png" 
+                                 alt="Safety-compliant aluminium pool fencing" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-accent/70 transition-all duration-500"></div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-display font-light text-white mb-1">Aluminium Pool Fencing</h3>
+                                <p class="text-white/80 text-sm">Australian law-compliant pool safety</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Aluminium Battens -->
+                    <article class="category-card group cursor-pointer hover-lift opacity-0" data-animate="slideUp" data-delay="400" role="listitem">
+                        <div class="relative h-80 bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="/assets/images/Aluminium Battens.jpg" 
+                                 alt="Architectural aluminium battens" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-accent/70 transition-all duration-500"></div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-display font-light text-white mb-1">Aluminium Battens</h3>
+                                <p class="text-white/80 text-sm">Architectural screening</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Aluminium Balustrades -->
+                    <article class="category-card group cursor-pointer hover-lift opacity-0" data-animate="slideUp" data-delay="500" role="listitem">
+                        <div class="relative h-80 bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="/assets/images/Aluminium Balustrades.png" 
+                                 alt="Modern aluminium balustrades" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-accent/70 transition-all duration-500"></div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-display font-light text-white mb-1">Aluminium Balustrades</h3>
+                                <p class="text-white/80 text-sm">Modern railing systems</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Tiles -->
+                    <article class="category-card group cursor-pointer hover-lift opacity-0" data-animate="slideUp" data-delay="600" role="listitem">
+                        <div class="relative h-80 bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="/assets/images/Tiles.jpg" 
+                                 alt="Luxury surface tiles" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-accent/70 transition-all duration-500"></div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-display font-light text-white mb-1">Tiles</h3>
+                                <p class="text-white/80 text-sm">Luxury surface solutions</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Composite Cladding -->
+                    <article class="category-card group cursor-pointer hover-lift opacity-0" data-animate="slideUp" data-delay="700" role="listitem">
+                        <div class="relative h-80 bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="/assets/images/Composite Cladding.jpg" 
+                                 alt="Modern composite cladding systems" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-accent/70 transition-all duration-500"></div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-display font-light text-white mb-1">Composite Cladding</h3>
+                                <p class="text-white/80 text-sm">Exterior wall systems</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Composite Decking -->
+                    <article class="category-card group cursor-pointer hover-lift opacity-0" data-animate="slideUp" data-delay="800" role="listitem">
+                        <div class="relative h-80 bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="/assets/images/Composite Decking.jpg" 
+                                 alt="Premium composite decking" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-accent/70 transition-all duration-500"></div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-display font-light text-white mb-1">Composite Decking</h3>
+                                <p class="text-white/80 text-sm">Premium outdoor flooring</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Bathrooms -->
+                    <article class="category-card group cursor-pointer hover-lift opacity-0" data-animate="slideUp" data-delay="900" role="listitem">
+                        <div class="relative h-80 bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="/assets/images/Bathrooms.jpg" 
+                                 alt="Complete bathroom solutions" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-accent/70 transition-all duration-500"></div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-display font-light text-white mb-1">Bathrooms</h3>
+                                <p class="text-white/80 text-sm">Complete luxury solutions</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-32 bg-secondary">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <div class="text-reveal-container">
+                        <h2 class="text-5xl md:text-6xl font-display font-light text-primary mb-6 opacity-0" data-animate="reveal">
+                            Why Choose <span class="gradient-text">Ecco Living</span>
+                        </h2>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" role="list">
+                    <!-- Feature 1 -->
+                    <div class="text-center group opacity-0" data-animate="fadeInUp" data-delay="100" role="listitem">
+                        <div class="w-20 h-20 mx-auto mb-8 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500" aria-hidden="true">
+                            <svg class="w-10 h-10 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium text-primary mb-4">Premium Quality</h3>
+                        <p class="text-text-light leading-relaxed">Curated selection of the finest materials and finishes from leading designers worldwide.</p>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="text-center group opacity-0" data-animate="fadeInUp" data-delay="300" role="listitem">
+                        <div class="w-20 h-20 mx-auto mb-8 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500" aria-hidden="true">
+                            <svg class="w-10 h-10 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium text-primary mb-4">Design Expertise</h3>
+                        <p class="text-text-light leading-relaxed">Expert consultation and design services to create spaces that reflect your unique vision.</p>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="text-center group opacity-0" data-animate="fadeInUp" data-delay="500" role="listitem">
+                        <div class="w-20 h-20 mx-auto mb-8 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500" aria-hidden="true">
+                            <svg class="w-10 h-10 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium text-primary mb-4">Nationwide Shipping</h3>
+                        <p class="text-text-light leading-relaxed">We ship selected items nationwide with dedicated logistics ensuring safe and timely arrival.</p>
+                    </div>
+                    
+                    <!-- Feature 4 -->
+                    <div class="text-center group opacity-0" data-animate="fadeInUp" data-delay="700" role="listitem">
+                        <div class="w-20 h-20 mx-auto mb-8 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500" aria-hidden="true">
+                            <svg class="w-10 h-10 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium text-primary mb-4">Expert Support</h3>
+                        <p class="text-text-light leading-relaxed">Professional guidance throughout your entire renovation journey from our experienced team.</p>
+                    </div>
+                    
+                    <!-- Feature 5 -->
+                    <div class="text-center group opacity-0" data-animate="fadeInUp" data-delay="900" role="listitem">
+                        <div class="w-20 h-20 mx-auto mb-8 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500" aria-hidden="true">
+                            <svg class="w-10 h-10 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium text-primary mb-4">Price Guarantee</h3>
+                        <p class="text-text-light leading-relaxed">Best price guarantee with transparent pricing and no hidden fees on all products.</p>
+                    </div>
+                    
+                    <!-- Feature 6 -->
+                    <div class="text-center group opacity-0" data-animate="fadeInUp" data-delay="1100" role="listitem">
+                        <div class="w-20 h-20 mx-auto mb-8 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500" aria-hidden="true">
+                            <svg class="w-10 h-10 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-medium text-primary mb-4">5-Star Service</h3>
+                        <p class="text-text-light leading-relaxed">Exceptional customer service with personalized attention to every detail of your project.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-32 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div class="opacity-0" data-animate="slideInLeft">
+                        <h2 class="text-5xl md:text-6xl font-display font-light text-primary mb-8">
+                            Crafting <br><span class="gradient-text">Exceptional</span> Spaces
+                        </h2>
+                        <p class="text-xl text-text-light mb-8 leading-relaxed">
+                            At Ecco Living, we believe that every space tells a story. Our carefully curated collection represents the pinnacle of design and craftsmanship, bringing together the world's finest materials and innovative solutions.
+                        </p>
+                        <p class="text-lg text-text-light mb-12 leading-relaxed">
+                            From luxurious bathroom fittings to contemporary fencing solutions and premium flooring options, we partner with leading designers and manufacturers to offer you exceptional quality and timeless style.
+                        </p>
+                        <a href="#contact" class="btn-advanced inline-block bg-primary text-white px-12 py-4 rounded-full font-medium tracking-wide hover:bg-accent hover:scale-105 transition-all duration-500" role="button">
+                            Start Your Project
+                        </a>
+                    </div>
+                    <div class="image-reveal-container opacity-0" data-animate="slideInRight">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Luxury interior design showcasing modern home solutions" 
+                             class="w-full h-96 object-cover rounded-2xl shadow-2xl"
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="py-32 bg-primary relative overflow-hidden">
+            <!-- Background animation -->
+            <div class="absolute inset-0 opacity-10" aria-hidden="true">
+                <div class="parallax-element absolute top-20 left-20 w-40 h-40 border border-accent rounded-full animate-float"></div>
+                <div class="parallax-element absolute bottom-20 right-20 w-32 h-32 border border-accent rounded-full animate-float" style="animation-delay: -3s;"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+                <div class="text-reveal-container mb-8">
+                    <h2 class="text-5xl md:text-6xl font-display font-light text-white mb-6 opacity-0" data-animate="reveal">
+                        Stay <span class="text-accent">Inspired</span>
+                    </h2>
+                </div>
+                <div class="text-reveal-container mb-12">
+                    <p class="text-xl text-white/80 font-light opacity-0" data-animate="reveal" data-delay="300">
+                        Subscribe to receive the latest design trends, product launches, and exclusive offers
+                    </p>
+                </div>
+                <div class="opacity-0" data-animate="fadeInUp" data-delay="600">
+                    <form id="newsletterForm" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" role="form" aria-label="Newsletter subscription">
+                        <label for="email" class="sr-only">Email address</label>
+                        <input type="email" 
+                               id="email"
+                               name="email"
+                               placeholder="Enter your email address" 
+                               class="flex-1 px-6 py-4 rounded-full bg-white/10 glass-effect text-white placeholder-white/60 border-0 focus:outline-none focus:ring-2 focus:ring-accent"
+                               required
+                               aria-required="true">
+                        <button type="submit" 
+                                class="btn-advanced bg-accent text-white px-8 py-4 rounded-full font-medium hover:bg-accent-dark hover:scale-105 transition-all duration-500">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-20" role="contentinfo">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="opacity-0" data-animate="fadeInUp" data-delay="100">
+                    <h3 class="text-2xl font-display font-light text-accent mb-6">Ecco Living</h3>
+                    <p class="text-white/70 mb-6 leading-relaxed">
+                        Curating exceptional home solutions with uncompromising quality and timeless design.
+                    </p>
+                    <div class="flex space-x-4" role="list" aria-label="Social media links">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300" aria-label="Twitter" role="listitem">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300" aria-label="Facebook" role="listitem">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300" aria-label="Instagram" role="listitem">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.749.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.758-1.378l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.624 0 11.99-5.367 11.99-11.99C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="opacity-0" data-animate="fadeInUp" data-delay="300">
+                    <h4 class="text-lg font-medium text-accent mb-6">Categories</h4>
+                    <ul class="space-y-4" role="list">
+                        <li role="listitem"><a href="#" class="text-white/70 hover:text-accent transition-colors duration-300">Bathrooms</a></li>
+                        <li role="listitem"><a href="#" class="text-white/70 hover:text-accent transition-colors duration-300">Fencing & Cladding</a></li>
+                        <li role="listitem"><a href="#" class="text-white/70 hover:text-accent transition-colors duration-300">Flooring</a></li>
+                        <li role="listitem"><a href="#" class="text-white/70 hover:text-accent transition-colors duration-300">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="opacity-0" data-animate="fadeInUp" data-delay="500">
+                    <h4 class="text-lg font-medium text-accent mb-6">Services</h4>
+                    <ul class="space-y-4" role="list">
+                        <li role="listitem"><a href="#" class="text-white/70 hover:text-accent transition-colors duration-300">Design Consultation</a></li>
+                        <li role="listitem"><a href="#" class="text-white/70 hover:text-accent transition-colors duration-300">Installation Services</a></li>
+                        <li role="listitem"><a href="#" class="text-white/70 hover:text-accent transition-colors duration-300">Warranty Support</a></li>
+                        <li role="listitem"><a href="#" class="text-white/70 hover:text-accent transition-colors duration-300">Delivery Information</a></li>
+                    </ul>
+                </div>
+                
+                <div class="opacity-0" data-animate="fadeInUp" data-delay="700">
+                    <h4 class="text-lg font-medium text-accent mb-6">Contact</h4>
+                    <div class="space-y-4 text-white/70">
+                        <p><a href="tel:1300326265" class="hover:text-accent transition-colors duration-300">1300 ECCO LIVING</a></p>
+                        <p><a href="mailto:hello@eccoliving.com.au" class="hover:text-accent transition-colors duration-300">hello@eccoliving.com.au</a></p>
+                        <p>Mon-Fri 8:30AM - 5:30PM AEST</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-white/50 text-sm">&copy; 2025 Ecco Living. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-white/50 hover:text-accent text-sm transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="text-white/50 hover:text-accent text-sm transition-colors duration-300">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-500 z-50" role="dialog" aria-modal="true" aria-label="Shopping cart">
+        <div class="p-6 border-b">
+            <div class="flex justify-between items-center">
+                <h3 class="text-2xl font-display font-medium">Shopping Cart</h3>
+                <button id="closeCart" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors duration-300" aria-label="Close cart">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="flex-1 p-6 overflow-y-auto">
+            <div id="cartItems">
+                <div class="text-center py-12 text-gray-500">
+                    Your cart is empty
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t p-6">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-xl font-medium">Total:</span>
+                <span id="cartTotal" class="text-2xl font-display font-medium text-accent">$0.00</span>
+            </div>
+            <button class="w-full bg-primary text-white py-4 rounded-full font-medium hover:bg-accent transition-colors duration-300">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Backdrop -->
+    <div id="cartBackdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40" aria-hidden="true"></div>
+
+    <!-- Error Boundary -->
+    <div id="errorBoundary" class="hidden fixed inset-0 bg-red-500/90 text-white flex items-center justify-center z-50" role="alert">
+        <div class="text-center">
+            <h2 class="text-2xl font-bold mb-4">Something went wrong</h2>
+            <p class="mb-4">We're sorry, but there was an error loading the page.</p>
+            <button onclick="location.reload()" class="bg-white text-red-500 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
+                Reload Page
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./assets/js/config.js"></script>
+    <script src="./assets/js/animations.js"></script>
+    <script src="./assets/js/components.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

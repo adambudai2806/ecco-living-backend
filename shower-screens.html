@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium shower screens - Frameless, semi-frameless, and framed shower enclosures from Ecco Living">
+    <meta name="keywords" content="shower screens, frameless shower screens, shower doors, shower enclosures, bathroom glass">
+    <title>Shower Screens - Premium Shower Enclosures | Ecco Living</title>
+    
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/cart-modal.css">
+    <script src="./assets/js/tailwind-config.js"></script>
+    
+    <style>
+        .product-card { opacity: 0; transform: translateY(40px); transition: all 0.6s ease; }
+        .product-card.visible { opacity: 1; transform: translateY(0); }
+        .filter-btn.active { background-color: #c0c0c0; color: white; }
+        .loading-spinner { border: 2px solid #f3f3f3; border-top: 2px solid #c0c0c0; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="font-sans text-text-dark overflow-x-hidden bg-white">
+    
+    <nav id="navbar" class="fixed top-0 w-full z-40 bg-white/95 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 lg:px-6">
+            <div class="flex items-center h-16">
+                <a href="index.html"><img src="/assets/images/logo.png" alt="Ecco Living" class="h-7 w-auto"></a>
+                <div class="hidden lg:flex items-center space-x-6 flex-1 ml-8">
+                    <a href="index.html" class="nav-link relative group text-sm font-medium">Home</a>
+                    <a href="shower-screens.html" class="nav-link relative group text-sm font-medium text-accent">Shower Screens</a>
+                    <a href="tapware.html" class="nav-link relative group text-sm font-medium">Tapware</a>
+                    <a href="#about" class="nav-link relative group text-sm font-medium">About</a>
+                    <a href="#contact" class="nav-link relative group text-sm font-medium">Contact</a>
+                </div>
+                <button id="cartBtn" class="relative p-2 hover:bg-accent/10 rounded-full transition-colors duration-300 group">
+                    <svg class="w-6 h-6 group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13v8a2 2 0 002 2h6a2 2 0 002-2v-8m-8 0h8"></path>
+                    </svg>
+                    <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 bg-accent text-white text-xs rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <section class="py-24 bg-gradient-to-br from-secondary via-white to-accent-light">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl md:text-6xl font-display font-light text-primary mb-6 opacity-0" data-animate="fadeInUp">
+                        Premium <span class="shimmer-text">Shower Screens</span>
+                    </h1>
+                    <p class="text-xl text-text-light font-light max-w-3xl mx-auto opacity-0" data-animate="fadeInUp" data-delay="200">
+                        Elegant shower enclosures featuring frameless, semi-frameless, and framed designs. Transform your bathroom with our premium glass shower solutions
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 bg-white border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button class="filter-btn active px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="all">All Shower Screens</button>
+                    <button class="filter-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="frameless">Frameless</button>
+                    <button class="filter-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="semi-frameless">Semi-Frameless</button>
+                    <button class="filter-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="framed">Framed</button>
+                    <button class="filter-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="pivot-doors">Pivot Doors</button>
+                    <button class="filter-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="sliding-doors">Sliding Doors</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div id="loadingState" class="text-center py-20">
+                    <div class="loading-spinner mx-auto mb-4"></div>
+                    <p class="text-text-light">Loading shower screen collection...</p>
+                </div>
+
+                <div class="mb-12 bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Frameless Shower Screen" 
+                                 class="w-full h-48 object-cover rounded-lg">
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Frameless Shower Screen</h4>
+                            <p class="text-gray-600 mb-4">Premium 10mm toughened safety glass with sleek hardware. Completely frameless design for a modern, open bathroom feel with maximum light transmission.</p>
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="text-2xl font-bold text-indigo-600">From $899</span>
+                                <span class="text-sm text-gray-500">Custom sizes</span>
+                            </div>
+                            <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300">Request Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 hidden"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart components -->
+    <div id="cartSidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="h-full flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <h2 class="text-xl font-display font-medium text-primary">Shopping Cart</h2>
+                <button id="closeCart" class="p-2 hover:bg-gray-100 rounded-full transition-colors">×</button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6">
+                <div id="cartItems" class="space-y-4"></div>
+                <div id="emptyCart" class="text-center py-12"><p class="text-text-light">Your cart is empty</p></div>
+            </div>
+            <div class="border-t border-gray-200 p-6">
+                <button id="checkoutBtn" class="w-full bg-accent text-white py-4 rounded-full font-medium">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <div id="cartOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300"></div>
+
+    <script src="./assets/js/components.js"></script>
+    <script src="./assets/js/ecommerce.js"></script>
+    <script src="./assets/js/shopify-cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.timeline().fromTo('[data-animate="fadeInUp"]', { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 });
+            if (window.EcommerceManager) { window.EcommerceManager.init(); window.EcommerceManager.loadShowerScreensProducts(); }
+            if (window.CartManager) { window.CartManager.init(); }
+        });
+    </script>
+</body>
+</html>

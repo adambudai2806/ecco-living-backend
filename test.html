@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Test - Ecco Living</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <h1>Asset Loading Test</h1>
+    <p>If this page has styling, CSS is loading correctly.</p>
+    
+    <div style="background: #c9a96e; padding: 20px; color: white; margin: 20px 0;">
+        This should be styled with the accent color if CSS loads.
+    </div>
+    
+    <script src="/assets/js/config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof CONFIG !== 'undefined') {
+                document.body.innerHTML += '<p style="color: green;">✅ JavaScript config loaded successfully!</p>';
+                console.log('CONFIG loaded:', CONFIG);
+            } else {
+                document.body.innerHTML += '<p style="color: red;">❌ JavaScript config failed to load</p>';
+            }
+        });
+    </script>
+</body>
+</html>

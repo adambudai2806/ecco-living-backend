@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium aluminium balustrades - Durable deck, balcony, and stair balustrades with contemporary designs from Ecco Living">
+    <meta name="keywords" content="aluminium balustrades, deck balustrades, stair railings, balcony balustrades, architectural balustrades">
+    
+    <title>Aluminium Balustrades - Contemporary Railing Systems | Ecco Living</title>
+    
+    <!-- Standard head content -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://sdks.shopifycdn.com/storefront-api-client/v2/shop-buy-umd.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/cart-modal.css">
+    <script src="./assets/js/tailwind-config.js"></script>
+    
+    <style>
+        .product-card { opacity: 0; transform: translateY(40px); transition: all 0.6s ease; }
+        .product-card.visible { opacity: 1; transform: translateY(0); }
+        .product-card:hover .product-image { transform: scale(1.05); }
+        .product-image { transition: transform 0.5s ease; }
+        .filter-btn.active { background-color: #c0c0c0; color: white; }
+        .loading-spinner { border: 2px solid #f3f3f3; border-top: 2px solid #c0c0c0; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="font-sans text-text-dark overflow-x-hidden bg-white">
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-40 bg-white/95 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 lg:px-6">
+            <div class="flex items-center h-16">
+                <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity duration-300 mr-8">
+                    <img src="/assets/images/logo.png" alt="Ecco Living" class="h-7 w-auto">
+                </a>
+                
+                <div class="hidden lg:flex items-center space-x-6 flex-1">
+                    <a href="index.html" class="nav-link relative group text-sm font-medium">
+                        <span class="relative z-10">Home</span>
+                        <span class="absolute inset-x-0 -bottom-1 h-px bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                    <a href="aluminium-balustrades.html" class="nav-link relative group text-sm font-medium text-accent">
+                        <span class="relative z-10">Aluminium Balustrades</span>
+                        <span class="absolute inset-x-0 -bottom-1 h-px bg-accent transform scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                    <a href="tapware.html" class="nav-link relative group text-sm font-medium">
+                        <span class="relative z-10">Tapware</span>
+                        <span class="absolute inset-x-0 -bottom-1 h-px bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                    <a href="#about" class="nav-link relative group text-sm font-medium">
+                        <span class="relative z-10">About</span>
+                        <span class="absolute inset-x-0 -bottom-1 h-px bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                    <a href="#contact" class="nav-link relative group text-sm font-medium">
+                        <span class="relative z-10">Contact</span>
+                        <span class="absolute inset-x-0 -bottom-1 h-px bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="cartBtn" class="relative p-2 hover:bg-accent/10 rounded-full transition-colors duration-300 group">
+                        <svg class="w-6 h-6 group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13v8a2 2 0 002 2h6a2 2 0 002-2v-8m-8 0h8"></path>
+                        </svg>
+                        <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 bg-accent text-white text-xs rounded-full flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="py-24 bg-gradient-to-br from-secondary via-white to-accent-light">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl md:text-6xl font-display font-light text-primary mb-6 opacity-0" data-animate="fadeInUp">
+                        Aluminium <span class="shimmer-text">Balustrades</span>
+                    </h1>
+                    <p class="text-xl text-text-light font-light max-w-3xl mx-auto opacity-0" data-animate="fadeInUp" data-delay="200">
+                        Contemporary aluminium balustrade systems for decks, stairs, and balconies. Combining safety with sophisticated design for modern Australian architecture
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="py-12 bg-white border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button class="filter-btn active px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="all">All Balustrades</button>
+                    <button class="filter-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="blade">Blade Aluminium</button>
+                    <button class="filter-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="ray">Ray Aluminium</button>
+                    <button class="filter-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="view">View Aluminium</button>
+                    <button class="filter-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-accent" data-filter="skye">Skye Aluminium</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div id="loadingState" class="text-center py-20">
+                    <div class="loading-spinner mx-auto mb-4"></div>
+                    <p class="text-text-light">Loading aluminium balustrades...</p>
+                </div>
+
+                <!-- Featured Product -->
+                <div class="mb-12 bg-stone-50 border border-stone-200 rounded-lg p-6">
+                    <div class="flex items-center justify-between gap-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-stone-500 text-white px-3 py-1 rounded-full text-sm font-medium">FEATURED</div>
+                            <h3 class="text-xl font-display font-medium text-stone-800">Premium Aluminium Balustrade</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1600607686829-7adc4ce5d4d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Premium Aluminium Balustrade" 
+                                 class="w-full h-48 object-cover rounded-lg">
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Premium Aluminium Balustrade System</h4>
+                            <p class="text-gray-600 mb-4">Contemporary aluminium balustrade with sleek vertical posts and horizontal rails. Durable powder coating, multiple colour options, and compliant with building standards.</p>
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="text-2xl font-bold text-stone-600">From $199/m</span>
+                                <span class="text-sm text-gray-500">Custom lengths</span>
+                            </div>
+                            <button class="add-to-cart-btn bg-stone-600 hover:bg-stone-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300">Request Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 hidden"></div>
+                <div id="noResults" class="text-center py-20 hidden">
+                    <h3 class="text-2xl font-display font-light text-gray-500 mb-2">No products found</h3>
+                    <p class="text-text-light">Try selecting a different category filter</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart components (same as other pages) -->
+    <div id="cartSidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="h-full flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <h2 class="text-xl font-display font-medium text-primary">Shopping Cart</h2>
+                <button id="closeCart" class="p-2 hover:bg-gray-100 rounded-full transition-colors">×</button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6">
+                <div id="cartItems" class="space-y-4"></div>
+                <div id="emptyCart" class="text-center py-12"><p class="text-text-light">Your cart is empty</p></div>
+            </div>
+            <div class="border-t border-gray-200 p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-medium text-primary">Total:</span>
+                    <span id="cartTotal" class="text-xl font-display font-medium text-primary">$0.00</span>
+                </div>
+                <button id="checkoutBtn" class="w-full bg-accent text-white py-4 rounded-full font-medium hover:bg-accent-dark transition-colors duration-300" disabled>Checkout with Shopify</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cartOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300"></div>
+
+    <!-- Scripts -->
+    <script src="./assets/js/components.js"></script>
+    <script src="./assets/js/ecommerce.js"></script>
+    <script src="./assets/js/shopify-cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.timeline().fromTo('[data-animate="fadeInUp"]', { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power2.out" });
+            if (window.EcommerceManager) { window.EcommerceManager.init(); window.EcommerceManager.loadAluminiumBalustradesProducts(); }
+            if (window.CartManager) { window.CartManager.init(); }
+        });
+    </script>
+</body>
+</html>
