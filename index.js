@@ -225,6 +225,110 @@ app.post('/api/products', (req, res) => {
     });
 });
 
+// Product scraping endpoints
+app.post('/api/scrape-product', (req, res) => {
+    const { url } = req.body;
+    
+    if (!url) {
+        return res.status(400).json({
+            success: false,
+            error: 'URL is required'
+        });
+    }
+    
+    // Mock scraper response - in reality this would scrape the URL
+    const mockScrapedData = {
+        name: 'Scraped Product Name',
+        description: 'This is a mock description from the scraped product page.',
+        price: '299.99',
+        images: [
+            'https://via.placeholder.com/400x400?text=Scraped+Image+1',
+            'https://via.placeholder.com/400x400?text=Scraped+Image+2'
+        ],
+        specifications: {
+            'Material': 'Stainless Steel',
+            'Finish': 'Chrome',
+            'Warranty': '10 Years'
+        },
+        brand: 'Extracted Brand',
+        sku: 'SCRAPED-' + Date.now(),
+        categories: ['102'], // Auto-detected as Tapware
+        variations: [
+            { name: 'Finish', options: ['Chrome', 'Brushed'] }
+        ]
+    };
+    
+    res.json({
+        success: true,
+        data: mockScrapedData,
+        message: 'Product data extracted successfully'
+    });
+});
+
+app.post('/api/scrape-product-dynamic', (req, res) => {
+    const { url } = req.body;
+    
+    if (!url) {
+        return res.status(400).json({
+            success: false,
+            error: 'URL is required'
+        });
+    }
+    
+    // Mock dynamic pricing data
+    const mockDynamicData = {
+        currentPrice: '289.99',
+        originalPrice: '349.99',
+        discount: '17%',
+        availability: 'In Stock',
+        lastUpdated: new Date().toISOString()
+    };
+    
+    res.json({
+        success: true,
+        data: mockDynamicData,
+        message: 'Dynamic pricing data extracted successfully'
+    });
+});
+
+app.post('/api/scrape-pdf', (req, res) => {
+    const { url } = req.body;
+    
+    if (!url) {
+        return res.status(400).json({
+            success: false,
+            error: 'PDF URL is required'
+        });
+    }
+    
+    // Mock PDF extraction data
+    const mockPdfData = {
+        text: 'Extracted text content from PDF specification sheet...',
+        specifications: {
+            'Dimensions': '200mm x 150mm x 100mm',
+            'Weight': '2.5kg',
+            'Installation': 'Wall mounted',
+            'Compliance': 'WELS 5 Star'
+        },
+        tables: [
+            {
+                headers: ['Size', 'Price', 'SKU'],
+                rows: [
+                    ['Small', '$199', 'SKU-001'],
+                    ['Medium', '$299', 'SKU-002'],
+                    ['Large', '$399', 'SKU-003']
+                ]
+            }
+        ]
+    };
+    
+    res.json({
+        success: true,
+        data: mockPdfData,
+        message: 'PDF data extracted successfully'
+    });
+});
+
 // Admin routes (simplified)
 app.get('/api/admin/dashboard', (req, res) => {
     res.json({
